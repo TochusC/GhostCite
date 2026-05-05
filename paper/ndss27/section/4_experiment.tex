@@ -44,7 +44,10 @@ To ensure the accuracy of our analysis and to avoid false positives (where valid
    \item \textit{Step 2: Manual Verification.} Sixteen trained research assistants manually reviewed all flagged citations over approximately one month. Each citation was independently checked at least twice before being classified into one of three categories: \textit{Non-Academic Source} (websites, blogs, repositories), \textit{Valid} (verified through extensive manual search), or \textit{Invalid} (incorrect metadata or untraceable).
 
     \item \textit{Step 3: False Negative Estimation.}
-    We sampled 400 citations from the ``valid'' pool (95\% confidence, 5\% margin of error) for manual review. No additional invalid citations were found, suggesting high recall.
+    We sampled 400 citations from the ``valid'' pool for manual review.
+    \added{This sample size was determined using standard sample-size estimation for proportions: with an expected false-negative rate near zero, a 95\% confidence level, and a 5\% margin of error, approximately 384 samples are required; we rounded up to 400 to ensure robustness~
+ocite{cochran1977sampling}.}
+    No additional invalid citations were found, suggesting high recall.
 \end{itemize}
 
 Two expert researchers subsequently reviewed all manually classified invalid citations to ensure accuracy, and further subdivided them into two subcategories: \textit{error citation} and \textit{ghost citation} (untraceable citations cannot be found even with extensive manual search).
@@ -56,3 +59,5 @@ Some untraceable citations appear clearly fabricated (e.g., titles stitched toge
 To understand the human factors enabling ghost citations to reach publication, we conducted a survey of active researchers across career stages and research areas, recruiting participants via social media and targeted emails to 300 randomly sampled authors and PC members from the above 8 venues; email addresses were manually collected from public sources. 
 The survey covered four dimensions: AI adoption, citation practices, author-level verification behavior, and reviewer-level verification behavior, and included paired reverse-worded questions to flag inconsistent responses as a data-quality check (the full survey is provided in \cref{app:survey_details_full}).
 Following IRB approval, the online survey provided full study details and opt-out options; it took 10--15 minutes, was voluntary and anonymized, and obtained informed consent without collecting personally identifiable information. Responses were stored and analyzed in de-identified form with access control.
+
+\noindent\textbf{\added{Data analysis.}} \added{Quantitative responses were analyzed using descriptive statistics (frequencies and percentages). For the open-ended comment question (Q59), two researchers independently performed thematic coding to identify recurring themes; disagreements were resolved through discussion. To ensure response consistency, we included paired reverse-worded items (Q38 and Q39): respondents who simultaneously endorsed risky behavior (``often copy-paste without checking'') and diligent behavior (``meticulously verify every field'') were flagged as inconsistent and excluded ($3/97$), yielding $N=94$ valid responses for analysis.}
