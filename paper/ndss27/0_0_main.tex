@@ -83,9 +83,7 @@
 \hyphenation{op-tical net-works semi-conduc-tor}
 
 % tcolorbox environments
-\newcounter{keyfindingcounter}
-\newtcolorbox{keyfindingsSidebar}[1][]{
-	code={\refstepcounter{keyfindingcounter}},
+\newtcolorbox{keyfindingsSidebar}[1]{
 	enhanced,
 	colback=white,
 	colframe=paperPrimaryLight,
@@ -98,7 +96,7 @@
 	borderline west={4pt}{0pt}{paperPrimary},
 	coltitle=paperPrimary,
 	fonttitle=\bfseries\small,
-	title={\faLightbulb\ Keyfinding~\thekeyfindingcounter: #1},
+	title={#1},
 	before skip=8pt,
 	after skip=8pt
 }
