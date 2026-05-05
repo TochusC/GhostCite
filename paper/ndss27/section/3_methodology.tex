@@ -92,7 +92,7 @@ For verification, we employ multiple sources: we construct a local DBLP database
 
 \noindent\textbf{Similarity Computation and Threshold Selection.}
 For similarity-based classification, we normalize titles and compute Levenshtein distance\cite{levenshtein1966binary} (using the highest similarity among all retrieved candidates).
-We set the classification threshold to $\theta = 0.9$, roughly corresponding to a one--two word difference in a long title.
+We set the classification threshold to $\theta = 0.9$, roughly corresponding to a one or two word difference in a long title.
 We validate this choice based on the subsequent experiments in \cref{sec:llm_results} and \cref{sec:archival_results}, using the empirical CDF of title similarity for real-paper citations and LLM-generated citations (\Cref{fig:llm_papers_similarity_ecdf}).
 Real-paper similarities remain near 1.0: only 0.4\% fall at or below 0.9, and the small tail below 1.0 is largely attributable to noise (OCR errors, hyphenation, minor typos).
 In contrast, LLM-generated citations rise gradually, with 50.3\% at or below 0.9, validating $\theta = 0.9$ as a threshold that preserves high recall for real papers while filtering low-similarity hallucinations.
