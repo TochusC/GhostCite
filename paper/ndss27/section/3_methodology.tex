@@ -96,7 +96,7 @@ We set the classification threshold to $\theta = 0.9$, roughly corresponding to 
 We validate this choice based on the subsequent experiments in \cref{sec:llm_results} and \cref{sec:archival_results}, using the empirical CDF of title similarity for real-paper citations and LLM-generated citations (\Cref{fig:llm_papers_similarity_ecdf}).
 Real-paper similarities remain near 1.0: only 0.4\% fall at or below 0.9, and the small tail below 1.0 is largely attributable to noise (OCR errors, hyphenation, minor typos).
 In contrast, LLM-generated citations rise gradually, with 50.3\% at or below 0.9, validating $\theta = 0.9$ as a threshold that preserves high recall for real papers while filtering low-similarity hallucinations.
-\input{Figures/Sec3_Methodology/llm_papers_similarity_ecdf}
+\input{figure/Sec3_Methodology/llm_papers_similarity_ecdf}
 
 \noindent\textbf{Practical Considerations.}
 Key implementation choices include semaphore-based rate limiting (default: 10 concurrent requests) to respect API quotas; batch processing of entire directories with progress tracking and incremental result export; and CSV export with columns for final status, diagnosis, similarity scores, and matched external reference metadata.

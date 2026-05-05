@@ -4,7 +4,7 @@
 We benchmark 13 state-of-the-art LLMs on citation generation tasks, leveraging \citeb to verify each output against authoritative bibliographic sources.
 Our goal is to establish the prevalence of citation hallucination at its source and identify factors that may influence reliability.
 
-% \input{Tables/Sec5_LLM/tab_overall_stats}
+% \input{table/Sec5_LLM/tab_overall_stats}
 
 \noindent
 \textbf{Statistics Overview.}
@@ -14,7 +14,7 @@ In total, we obtained 20,653 well-formed JSON outputs from 22,800 interactions (
 Of these extracted citations, 164,933 (49.71\%) were verified as valid, while 166,876 (50.29\%) were invalid.
 We treat invalid citations as fabricated and manually checked two random samples (400 valid, 400 invalid). Valid accuracy was 100\%, and invalid accuracy was 98\% (392/400); the remaining 8 cases were non-paper sources (4), out-of-domain works (1), or poorly indexed items (3), suggesting relatively low false positive rates and confirm the high precision of the verification pipeline.
 
-\input{Tables/Sec5_LLM/tab_model_validity}
+\input{table/Sec5_LLM/tab_model_validity}
 
 \subsection{Overall Hallucination Rates}
 
@@ -41,7 +41,7 @@ Specifically, Grok 4 shows a 100\% hallucination rate in Artificial Intelligence
 Average hallucination rates across models range from 28.80\% (Computation and Language) to 80.19\% (Digital Libraries), a 51.39 percentage point gap (Table~\ref{tab:domain_sensitivity}, Appendix~\ref{app:domain_sensitivity}).
 This variation indicates that researchers in certain subfields face substantially higher exposure to hallucinated citations than other areas.
 
-\input{Figures/Sec5_LLM/domain_sensitivity}
+\input{figure/Sec5_LLM/domain_sensitivity}
 
 \subsection{Patterns of Generated Citations}
 
@@ -54,7 +54,7 @@ Valid citations show a relatively uniform distribution from 2000 to 2014, with a
 In contrast, hallucinated citations exhibit a markedly different pattern: hallucination rates increase steadily with publication year, from 27.61\% in 2000 to 98.75\% in 2025. We even find an exponential function fit with $R^2=0.94$ that models the relationship between publication year and hallucination count.
 This finding suggests that \textit{LLMs preferentially hallucinate citations with recent publication years}.
 
-\input{Figures/Sec5_LLM/temporal_distribution_barplot}
+\input{figure/Sec5_LLM/temporal_distribution_barplot}
 
 \noindent
 \textbf{Stability, Overlap, and Recurrence.}
@@ -65,7 +65,7 @@ The detailed stability and overlap analysis is provided in Appendix~\ref{app:sta
 
 \subsection{LLM Citation Validation Performance}
 \label{subsec:llm_as_judge}
-\input{Tables/Sec5_LLM/tab_judge_accuracy}
+\input{table/Sec5_LLM/tab_judge_accuracy}
 
 To assess whether LLMs can reliably evaluate citation validity, we conducted an auxiliary experiment where each of the 13 models was prompted to verify 100 bibliographic entries with known ground truth from our archival analysis in \cref{sec:archival_results} (50 valid, 50 invalid, full prompt is listed in Appendix~\ref{app:llm_judge_prompt}).
 Each model was prompted to classify each entry as VALID or INVALID, with both online search and chain-of-thought prompting enabled in API settings, and we measured their accuracy.

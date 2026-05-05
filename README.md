@@ -40,9 +40,9 @@ GhostCite/
 │       ├── 0_abstract.tex         # Abstract
 │       ├── section/               # Body sections (1_introduction–9_conclusion)
 │       ├── appendix/              # Appendix sections
-│       ├── Tables/                # Tables (by section)
-│       ├── Figures/               # Figures (by section)
-│       ├── Tex/                   # Additional TeX snippets
+│       ├── table/                 # Tables (by section)
+│       ├── figure/                # Figures (by section)
+│       │   └── raw/               # Figure source files
 │       ├── style/                 # IEEEtran.cls, ndss2026.tex
 │       └── references.bib         # Bibliography
 ├── system/              # System implementation (CiteVerifier framework)
