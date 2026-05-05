@@ -1,7 +1,7 @@
 \section{Introduction}
 
 Citations serve as a trust mechanism that justifies scientific claims~\cite{kaplan1965norms,merton1973sociology}: readers assume that cited work exists and supports the claims being made, and rarely verify that it does~\cite{simkin2003read}. However, when a citation is invalid, this trust mechanism collapses.
-The advent of AI-assisted academic writing has introduced a novel threat to this scholarly trust infrastructure~\cite{thorp2023chatgpt}. Researchers increasingly leverage LLMs to synthesize literature reviews, curate related work, or compile reference lists.
+The advent of AI-assisted academic writing has introduced a novel threat to this scholarly trust infrastructure~\cite{thorp2023chatgpt}. \added{This threat is especially acute in security research, where literature reviews underpin threat modeling, vulnerability taxonomy construction, and reproducibility of offensive and defensive techniques; a fabricated citation in a security paper can misdirect defensive investment, introduce phantom prior art, or undermine the evidentiary chain of a claimed attack or mitigation.} Researchers increasingly leverage LLMs to synthesize literature reviews, curate related work, or compile reference lists.
 When prompted for citations, these systems do not look up references. Instead, leveraging their inherent generative nature~\cite{vaswani2017attention}, they \textit{synthesize} references by combining statistically correlated tokens (real author names, plausible-sounding titles, and prestigious venue names) into citations that appear authentic despite being entirely fabricated. 
 This phenomenon commonly described as ``ghost citations''~\cite{zoteroforum2018ghost,consultmu2026ghost,tay2025why}, representing a qualitatively new category of academic misconduct: high-fidelity fabrications that exploit the format-compliance of bibliographic conventions to evade detection. Such ghost citations pose a systemic threat to the integrity of scholarly communication.
 The emergence of ghost citations has caught the attention of prestigious conferences and academic governing bodies. For instance, ICLR 2026 chairs issued guidelines warning against AI-generated content, including fabricated citations~\cite{chairs2025iclr}, and major publishers such as IEEE have established policies requiring disclosure of AI usage in manuscripts~\cite{ieee2025ai-policy}.
@@ -19,6 +19,7 @@ Yet despite growing awareness, we lack systematic answers to three fundamental q
 Prior work and policy discussions highlight the risks of ghost citations~\cite{chairs2025iclr,thorp2023chatgpt,oladokun2025hallucitation}, but to answer the above questions, three practical gaps remain. First, scalable detection is difficult because citations are heterogeneous~\cite{ISO690_2021}, and need to be verified against incomplete and inconsistent bibliographic databases; this makes automated, high accuracy verification challenging at scale. 
 Second, we still lack large-scale, empirical measurement of how prevalent ghost citations are in both LLM outputs and the published record. 
 Third, we lack a clear explanation for why verification practices fail: when and why authors or reviewers skip checks, and how those behaviors allow fabricated citations to persist. 
+\added{Fourth, the security community lacks evidence on how ghost citations specifically compromise trust in security literature, despite the field's reliance on precise attribution for tracking threat evolution and validating defensive claims.}
 These gaps motivate our comprehensive study.
 
 \noindent
@@ -45,6 +46,7 @@ Among respondents who answered the AI-use question (n=86), \textit{87.2\%} use A
 At a broader level, 74.5\% of researchers view peer review as ineffective at catching metadata errors, while 70.2\% strongly support automated checks (Section~\ref{sec:survey_results}).
 
 Our findings reveal a concerning trend: \textit{LLMs are unreliable for citation generation}, \textit{untraceable citations have already penetrated the scientific record}, and \textit{human verification mechanisms systematically fail} to catch them.
+\added{For the security community specifically, ghost citations constitute a new form of computing abuse that erodes the evidentiary foundations of threat research, pentesting methodologies, and vulnerability disclosure practices.}
 Our work follows the tradition of meta-science measurement studies that expose structural problems in research practices~\cite{baker2016reproducibility,ioannidis2005most,rossow2012prudent,schloegel2025confusing}.
 Just as prior work revealed reproducibility crises and evaluation pitfalls~\cite{baker2016reproducibility,rossow2012prudent}, we identify an emerging threat to the integrity of scholarly citation, one that demands immediate attention as AI adoption accelerates. 
 We strongly argue that the scientific community should treat ghost citations as a systemic threat to scholarly integrity. Addressing this challenge requires immediate and coordinated efforts from all stakeholders, including publishers, reviewers, and the researchers themselves.
@@ -53,7 +55,7 @@ We strongly argue that the scientific community should treat ghost citations as 
 Our contributions are as follows:
 
 \begin{enumerate}
-    \item \textbf{Technical baseline for citation verification.} We develop \textsc{GhostCite}, an open-source framework that verifies citations at scale, providing a replicable implementation example for venues, publishers, and future work.
+    \item \textbf{Technical baseline for citation verification.} \added{We frame ghost citations as a systemic threat to research integrity, particularly in security, and develop} \textsc{GhostCite}, an open-source framework that verifies citations at scale, providing a replicable implementation example for venues, publishers, and future work.
 
     \item \textbf{Large-scale benchmark of LLM citation accuracy.} We evaluate \textit{13} LLMs across \textit{40} domains on \textit{375,440} citations, showing hallucination rates of \textit{14.23--94.93\%} with significant research domain sensitivity.
     

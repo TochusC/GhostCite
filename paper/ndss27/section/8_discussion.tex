@@ -50,6 +50,7 @@ At minimum, check each cited title in a trusted index and treat missing DOIs or 
 \textbf{For Conference and Journal Organizers.}
 Deploy automated citation verification in submission systems (our survey shows 70.2\% strong support), require authors to attest that citations have been verified, provide lightweight verification tools to reviewers, and establish clear policies on AI-assisted citation generation.
 Require structured reference metadata at submission (e.g., BibTeX) and provide reviewers with a compact citation-risk summary to enable targeted checks without increasing burden.
+\added{For security venues specifically, ghost citations pose unique risks: a fabricated reference in a threat-modeling paper can introduce phantom attack vectors, while an invalid citation in a vulnerability analysis can misattribute credit or obscure the true provenance of a defensive technique. We urge security conference organizers to treat automated citation verification as part of the broader integrity infrastructure, alongside artifact evaluation and reproducibility checks.}
 
 % \xl{提交论文的同时，提交bib格式的参考文献}
 % \xl{然后一个题外话，我们是否能为hotcrp开源网站开发一个检测的功能，因为是开源的，接入我们开发出来的检测API}
@@ -84,4 +85,8 @@ This conservative approach may undercount hallucinations that closely resemble r
 \textit{The detected invalid citations are likely to be a conservative lower bound} on the true hallucination rate.
 To mitigate human bias in manual verification, each flagged citation was double-checked by independent reviewers to ensure accuracy.
 However is still possible that some internal or poorly indexed papers were misclassified as invalid citations.
+
+\noindent
+\textbf{\added{External Validity of LLM Benchmark.}}
+\added{Our LLM benchmark employs a controlled, standardized prompting protocol in which models generate fixed-size blocks of citations per domain. While this design ensures internal validity---enabling fair cross-model and cross-domain comparisons under identical conditions---it may not fully capture the diversity of real-world researcher workflows, where citations are generated in the context of specific drafts, arguments, or literature reviews rather than via bulk requests. We therefore caution against interpreting our hallucination rates as direct estimates of real-world prevalence; rather, they represent a rigorous lower bound under standardized conditions. Future work could strengthen external validity by observing or replicating realistic citation-generation scenarios, such as assisting with actual paper drafts.}
 
