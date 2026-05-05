@@ -1,0 +1,15 @@
+\subsection{LLM Citation Validity Judgment}
+\label{app:llm_judge}
+
+To assess whether LLMs can reliably judge citation validity, we conducted an auxiliary experiment where each of the 13 models was prompted to verify 100 bibliographic entries with known ground truth from our archival analysis (50 valid, 50 invalid ghost citations).
+Each entry (title, authors, year, venue) was presented individually, and models were asked to judge whether it corresponds to a real publication.
+Both online search and chain-of-thought prompting were enabled to simulate the best-case scenario.
+
+\input{Sec5_LLM/tab_judge_accuracy}
+\input{Sec5_LLM/tab_models_evaluated}
+Table~\ref{tab:judge_accuracy} presents the results. The findings reveal systematic failure: average accuracy was only 38\%, below the 50\% random baseline. 
+Only ERNIE exceeded 50\% accuracy (56\%), but achieved this by aggressively flagging citations as invalid---it correctly identified all 50 invalid citations (100\% precision) but misidentified 88\% of valid citations as fabricated.
+This extreme conservatism renders such an approach impractical for real-world verification where most citations are legitimate.
+
+These results demonstrate that LLMs cannot reliably validate citations based on parametric knowledge alone. Our \citeb framework's multi-source cascade approach deliberately avoids depending on single LLM judgments, instead grounding verification in external authoritative sources (DBLP, academic databases, web search).
+

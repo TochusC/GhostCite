@@ -1,0 +1,43 @@
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{Figures/Appendix/cross-model_citation_overlap.pdf}
+    \caption{Cross-model citation overlap heatmap. Color represents the Extended Jaccard similarity percentage.}
+    \label{fig:cross_model_overlap}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% RATIONALE FOR CROSS-MODEL CITATION OVERLAP ANALYSIS
+% ------------------------------------------------------------------------------
+% This heatmap quantifies the proximity of training data compositions among LLMs
+% using the Extended Jaccard Similarity index as a proxy.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 1. METRIC DEFINITION: EXTENDED JACCARD SIMILARITY
+% ------------------------------------------------------------------------------
+% The similarity coefficient J(A, B) is defined as:
+% J(A, B) = |A \cap B| / |A \cup B|
+% - A value of 100% (diagonal) indicates perfect identity.
+% - Values in [20%, 30%] suggest significant overlap in academic sources.
+% - Values below 5% indicate distinct or specialized training data bias.
+
+% 2. CLUSTERING AND DATA HOMOGENEITY
+% ------------------------------------------------------------------------------
+% Observation: High correlation clusters (e.g., DeepSeek, GLM-4.5, Qwen-3).
+% Inference: These models likely utilize overlapping public-domain academic 
+% repositories (e.g., specific arXiv slices or web-crawled scholarly indices), 
+% leading to convergent citation behaviors.
+
+% 3. OUTLIER ANALYSIS AND DATA UNIQUENESS
+% ------------------------------------------------------------------------------
+% Observation: Models like 'Hunyuan' exhibit minimal overlap (< 1%) with others.
+% Inference: This indicates a highly divergent training set or a constrained 
+% generative temperature that prioritizes unique internal data representations, 
+% minimizing cross-model citation convergence.
+
+% 4. METHODOLOGICAL IMPLICATION
+% ------------------------------------------------------------------------------
+% This heatmap serves as a 'Data Fingerprint' to detect data leakage or 
+% redundancy. Higher overlap suggests that the diversity of the multi-model 
+% ensemble is compromised by shared underlying data biases.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

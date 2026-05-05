@@ -1,0 +1,33 @@
+% Table: Citation hallucination rates and JSON output rates by model
+\begin{table}[t]
+  \centering
+  \begin{threeparttable}
+    \caption{LLM performance on citation generation, ranked by hallucination rate (lower is better).}
+    \label{tab:model_validity}
+    \footnotesize
+    \rowcolors{2}{tableRowLight}{tableRowWhite}
+    \begin{tabular}{lcccc}
+    \toprule
+    \textbf{Model} & \cellcolor{blue!8}\textbf{JSON (\%)} & \cellcolor{green!12}\textbf{Citations} & \cellcolor{red!12}\textbf{Halluc. (\%)} & \textbf{95\% CI} \\
+    \midrule
+    DeepSeek & \cellcolor{blue!12}97.67 & \cellcolor{green!12}27,973 & \cellcolor{red!6}14.23 & $\pm$1.65 \\
+    GLM-4.5 & \cellcolor{blue!12}97.22 & \cellcolor{green!12}27,835 & \cellcolor{red!6}21.25 & $\pm$1.94 \\
+    Claude 4 & \cellcolor{blue!15}100.00 & \cellcolor{green!14}28,800 & \cellcolor{red!8}21.84 & $\pm$1.93 \\
+    Qwen-3 & \cellcolor{blue!12}99.38 & \cellcolor{green!12}28,546 & \cellcolor{red!8}23.52 & $\pm$1.99 \\
+    Kimi & \cellcolor{blue!6}89.09 & \cellcolor{green!10}24,955 & \cellcolor{red!12}41.86 & $\pm$2.44 \\
+    Llama 4 & \cellcolor{blue!12}97.33 & \cellcolor{green!12}27,925 & \cellcolor{red!14}45.84 & $\pm$2.36 \\
+    GPT-5 & \cellcolor{blue!12}97.90 & \cellcolor{green!12}28,366 & \cellcolor{red!16}50.92 & $\pm$2.36 \\
+    Gemini & \cellcolor{blue!10}95.80 & \cellcolor{green!10}27,102 & \cellcolor{red!18}59.47 & $\pm$2.34 \\
+    ERNIE & \cellcolor{blue!10}95.06 & \cellcolor{green!10}27,332 & \cellcolor{red!20}71.90 & $\pm$2.15 \\
+    Seed & \cellcolor{blue!3}48.75 & \cellcolor{green!6}11,090 & \cellcolor{red!22}78.64 & $\pm$2.74 \\
+    Grok 4 & \cellcolor{blue!12}99.03 & \cellcolor{green!12}28,627 & \cellcolor{red!24}79.98 & $\pm$1.88 \\
+    Phi-4 & \cellcolor{blue!8}93.35 & \cellcolor{green!10}27,164 & \cellcolor{red!26}87.47 & $\pm$1.60 \\
+    Hunyuan & \cellcolor{blue!3}62.90 & \cellcolor{green!8}16,094 & \cellcolor{red!28}94.93 & $\pm$1.29 \\
+    \bottomrule
+    \end{tabular}
+    \begin{tablenotes}
+      \footnotesize
+      \item \colorbox{red!15}{\textbf{Halluc.:}} Hallucination rate, the percentage of citations verified as invalid. \textbf{95\% CI:} Confidence interval margin ($\pm$) for the hallucination rate.
+    \end{tablenotes}
+  \end{threeparttable}
+\end{table}

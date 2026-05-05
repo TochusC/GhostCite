@@ -1,0 +1,56 @@
+\section{Experiment Design}
+\label{subsec:experiment_design}
+
+To measure the prevalence of ghost citations and understand their origins across the research ecosystem, we conduct three complementary experiments: an LLM Benchmark to quantify ghost-citation generation by state-of-the-art LLMs; an Archival Analysis to measure real-world prevalence; and a User Study to understand the human factors that allow ghost citations to persist. Below, we describe each in detail.
+
+\subsection{Experiment I: LLM Benchmark}
+\label{subsec:experiment_i}
+
+In this experiment, we systematically evaluate 13 state-of-the-art LLMs spanning major vendors and diverse architectural approaches (see \cref{tab:models_evaluated} for the complete list), assessing their ability to generate valid academic citations.
+
+% {xiang: 这里应该简单文字描述一下prompt是针
+% 对xx领域生成xx个文献返回xx格式的引用}
+% \xl{缺失对于LLMvalid、invalid抽查400个结果的实验描述，看看在这里说还是第4章}
+\noindent\textbf{Setup.}
+All models were accessed via a third-party API aggregation platform (OpenRouter)~\cite{openrouter} for consistent interfaces.
+We constructed a taxonomy of 40 computer science research domains based on arXiv CS subject classes~\cite{arxivCSClasses} (full list in the \cref{app:domain_codes}).
+For each model-domain combination we use a standardized prompt to generate citations within that domain; the prompt asks the model to produce a fixed number of domain-specific references in a strict JSON schema (author, title, venue, year, type), enabling consistent parsing and verification (the full prompt is provided in \cref{app:llm_citation_prompt}).
+\noindent\textbf{Conditions and verification.}
+We varied two factors: batch size (10, 20, or 30 citations per prompt) and whether to enable online search with chain-of-thought prompting.
+For each model-domain-batch-search combination, we generate 120 citations ($30\times4$ interactions, $20\times6$ interactions, or $10\times12$ interactions).
+In total, we obtained 375,440 citations from 22,800 API interactions, with total API costs amounting to $\approx 800$ USD.
+All generated citations were verified with \citeb and classified as VALID or INVALID. Unparseable outputs were flagged as format errors and only included in format compliance statistics, not hallucination rates.
+
+%  \xl{一次验证100个，还是每次验证1个验证100次，需要写一下}
+\noindent\textbf{Auxiliary Experiment: Citation Validity Judgment.}
+To assess whether LLMs can reliably evaluate citation validity, we conducted an auxiliary experiment where each model was prompted to verify 100 bibliographic entries with known ground truth (50 valid, 50 invalid) from our archival analysis (\cref{sec:archival_results}), one entry per prompt, and classify each as VALID or INVALID. The prompt is provided in Appendix~\ref{app:llm_judge_prompt}.
+
+\subsection{Experiment II: Archival Analysis}
+\label{subsec:experiment_ii}
+
+% \xl{有没有明确的引用说明LLM在2023前后的变化}) to allow longitudinal analysis.
+% \xl{怎么收集的，花了多久，符合ethical，简单说} 
+% \xl{花费多少钱，LLM的实验花费了800美元，这个实验花了多少，800是不是也包括这里的花费}
+To quantify the real-world penetration of ghost citation into the scientific record, we analyze published papers from top-tier venues.
+We target two research communities: \textit{Security} (IEEE S\&P, USENIX Security, ACM CCS, NDSS) and \textit{AI/ML} (NeurIPS, ICML, IJCAI, AAAI), focusing on venues that are central to LLM research and have rigorous peer review~\cite{csrankings}.
+Data span 2020--2025 (pre-LLM 2020--2022, post-LLM 2023--2025)~\cite{maslej2025artificial} for longitudinal analysis.
+We collected all accepted papers (main, workshop, short, poster) in PDF from official proceedings using ethically compliant access and stewardship practices (see \cref{sec:ethics}), yielding a total of 56,381 papers.
+To ensure the accuracy of our analysis and to avoid false positives (where valid citations are misclassified as invalid), we employ a rigorous three-stage process:
+\begin{itemize}
+    \item \textit{Step 1: Automated Examination.}
+    All 56,381 papers were processed through \citeb, extracting citations, and flagging potentially problematic citations as invalid, meaning their title falls below the similarity threshold $\theta = 0.9$.
+   \item \textit{Step 2: Manual Verification.} Sixteen trained research assistants manually reviewed all flagged citations over approximately one month. Each citation was independently checked at least twice before being classified into one of three categories: \textit{Non-Academic Source} (websites, blogs, repositories), \textit{Valid} (verified through extensive manual search), or \textit{Invalid} (incorrect metadata or untraceable).
+
+    \item \textit{Step 3: False Negative Estimation.}
+    We sampled 400 citations from the ``valid'' pool (95\% confidence, 5\% margin of error) for manual review. No additional invalid citations were found, suggesting high recall.
+\end{itemize}
+
+Two expert researchers subsequently reviewed all manually classified invalid citations to ensure accuracy, and further subdivided them into two subcategories: \textit{error citation} and \textit{ghost citation} (untraceable citations cannot be found even with extensive manual search).
+Some untraceable citations appear clearly fabricated (e.g., titles stitched together from high-probability phrases); others simply do not exist in standard bibliographic indexes, and both align with the definition of ``ghost citations'' in our study.
+
+\subsection{Experiment III: User Study}
+\label{subsec:experiment_iii}
+
+To understand the human factors enabling ghost citations to reach publication, we conducted a survey of active researchers across career stages and research areas, recruiting participants via social media and targeted emails to 300 randomly sampled authors and PC members from the above 8 venues; email addresses were manually collected from public sources. 
+The survey covered four dimensions: AI adoption, citation practices, author-level verification behavior, and reviewer-level verification behavior, and included paired reverse-worded questions to flag inconsistent responses as a data-quality check (the full survey is provided in \cref{app:survey_details_full}).
+Following IRB approval, the online survey provided full study details and opt-out options; it took 10--15 minutes, was voluntary and anonymized, and obtained informed consent without collecting personally identifiable information. Responses were stored and analyzed in de-identified form with access control.

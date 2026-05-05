@@ -1,0 +1,86 @@
+\section{Measuring the Unreliability: LLM Benchmark}
+\label{sec:llm_results}
+
+We benchmark 13 state-of-the-art LLMs on citation generation tasks, leveraging \citeb to verify each output against authoritative bibliographic sources.
+Our goal is to establish the prevalence of citation hallucination at its source and identify factors that may influence reliability.
+
+% \input{Tables/Sec5_LLM/tab_overall_stats}
+
+\noindent
+\textbf{Statistics Overview.}
+Despite the structured JSON format specified in our prompts, a notable fraction of models struggled to adhere to the requested format, resulting in
+unparseable outputs.
+In total, we obtained 20,653 well-formed JSON outputs from 22,800 interactions (90.58\% format compliance) and successfully extracted 331,809 citations from the expected 375,440 (88.38\% extraction rate).
+Of these extracted citations, 164,933 (49.71\%) were verified as valid, while 166,876 (50.29\%) were invalid.
+We treat invalid citations as fabricated and manually checked two random samples (400 valid, 400 invalid). Valid accuracy was 100\%, and invalid accuracy was 98\% (392/400); the remaining 8 cases were non-paper sources (4), out-of-domain works (1), or poorly indexed items (3), suggesting relatively low false positive rates and confirm the high precision of the verification pipeline.
+
+\input{Tables/Sec5_LLM/tab_model_validity}
+
+\subsection{Overall Hallucination Rates}
+
+Table~\ref{tab:model_validity} presents both JSON format compliance and citation hallucination rates for each model.
+LLMs exhibit significant variance in citation validity, with hallucination rates spanning from 14.23\% (DeepSeek) to 94.93\% (Hunyuan), a roughly 6.7$\times$ difference.
+This wide performance gap reveals that citation generation capability is far from uniformly developed across LLM vendors, and users cannot assume that all ``state-of-the-art'' models are equally reliable for bibliographic tasks.
+
+We further examined factors that might influence hallucination rates, such as online search, chain-of-thought prompting, and batch size.
+In our experiment, these factors did not show a consistent effect on hallucination rates across models, details of which are provided in Appendix~\ref{app:online_impact}, suggesting that hallucination is a fundamental limitation of the models' bibliographic knowledge rather than an artifact of specific prompting strategies or output quantity.
+
+\subsection{Domain Sensitivity}
+We also analyzed hallucination rates across 40 research domains, revealing significant \textit{domain sensitivity} in citation generation performance, as shown in \cref{fig:model_topic_heatmap}
+
+\noindent
+\textbf{Model-Centric View.}
+Within the same model, hallucination rates vary widely across domains. Even the best-performing model, DeepSeek (lowest overall hallucination rate), exhibits marked performance gaps across domains: it achieves strong performance in some domains (e.g., 2.6\% in CV) but hallucination rates rise substantially in others (e.g., 52.5\% in OH).
+\textit{No model is uniformly reliable;} users cannot assume a low overall hallucination rate implies reliability across all areas.
+
+\noindent
+\textbf{Domain-Centric View.}
+Within the same domain, models exhibit wide variance in hallucination rates.
+In Hardware Architecture (AR), Grok 4 approaches near-total failure (99.2\%) while DeepSeek remains comparatively accurate (8.6\%); in Digital Libraries (DL), frontier models GPT-5 (93.0\%) and Claude 4 (97.2\%) both show high rates.
+Specifically, Grok 4 shows a 100\% hallucination rate in Artificial Intelligence (AI); manual checks indicate that most outputs are stitched together from the prompted example papers in this domain (prompt details in Appendix~\ref{app:llm_citation_prompt}), suggesting overfitting to the prompt rather than generating valid citations.
+Average hallucination rates across models range from 28.80\% (Computation and Language) to 80.19\% (Digital Libraries), a 51.39 percentage point gap (Table~\ref{tab:domain_sensitivity}, Appendix~\ref{app:domain_sensitivity}).
+This variation indicates that researchers in certain subfields face substantially higher exposure to hallucinated citations than other areas.
+
+\input{Figures/Sec5_LLM/domain_sensitivity}
+
+\subsection{Patterns of Generated Citations}
+
+Beyond aggregate hallucination rates, we examine the \textit{characteristics} of generated citations to understand how LLMs fabricate bibliographic information.
+
+\noindent
+\textbf{Temporal Distribution Analysis.}
+Figure~\ref{fig:temporal_distribution_barplot} reveals a clear pattern in the publication years of generated citations.
+Valid citations show a relatively uniform distribution from 2000 to 2014, with a steady increase from 2015 to 2020, followed by a decline (reflecting the models' training data cutoff).
+In contrast, hallucinated citations exhibit a markedly different pattern: hallucination rates increase steadily with publication year, from 27.61\% in 2000 to 98.75\% in 2025. We even find an exponential function fit with $R^2=0.94$ that models the relationship between publication year and hallucination count.
+This finding suggests that \textit{LLMs preferentially hallucinate citations with recent publication years}.
+
+\input{Figures/Sec5_LLM/temporal_distribution_barplot}
+
+\noindent
+\textbf{Stability, Overlap, and Recurrence.}
+We further analyze the stability of generated citations of each model and the generated citation overlap across models. Valid citations are notably more stable across runs (mean up to 0.58 for DeepSeek and 0.57 for Qwen-3), while hallucinated ones are less stable (mean up to 0.23).
+Consistent with this, the citations that recur most often are well-known, highly represented papers in model training data, such as ``NeRF'' in Graphics, ``RAG'' in NLP, and ``U-Net'' in Computer Vision; less prominent long-tail works are more prone to hallucination.
+The detailed stability and overlap analysis is provided in Appendix~\ref{app:stability_overlap}
+
+
+\subsection{LLM Citation Validation Performance}
+\label{subsec:llm_as_judge}
+\input{Tables/Sec5_LLM/tab_judge_accuracy}
+
+To assess whether LLMs can reliably evaluate citation validity, we conducted an auxiliary experiment where each of the 13 models was prompted to verify 100 bibliographic entries with known ground truth from our archival analysis in \cref{sec:archival_results} (50 valid, 50 invalid, full prompt is listed in Appendix~\ref{app:llm_judge_prompt}).
+Each model was prompted to classify each entry as VALID or INVALID, with both online search and chain-of-thought prompting enabled in API settings, and we measured their accuracy.
+
+Table~\ref{tab:judge_accuracy} shows that LLMs perform poorly at citation validation, achieving only 38\% average accuracy, even lower than random guessing (50\%).
+Only ERNIE exceeded 50\% accuracy (56\%), but achieved this by aggressively flagging citations as invalid: it correctly identified all 50 invalid citations (100\% precision) but misidentified 88\% of valid citations as fabricated.
+This finding is concerning: not only do LLMs hallucinate citations prolifically, they also \textit{cannot reliably verify citations} when prompted to do so. Users cannot solely rely on LLMs to self-correct or validate bibliographic outputs.
+
+\begin{keyfindingsSidebar}{LLM Benchmark}
+\begin{itemize}
+	\setlength{\itemsep}{0pt}
+    \setlength{\topsep}{0pt}
+    \setlength{\partopsep}{0pt}
+    \setlength{\parsep}{0pt}
+	\item All 13 state-of-the-art LLMs hallucinate citations (\textit{14.23--94.93\%}) with significant domain sensitivity.
+	\item LLMs are poor citation validators (\textit{38\%} accuracy), even lower than random guessing.
+\end{itemize}
+\end{keyfindingsSidebar}

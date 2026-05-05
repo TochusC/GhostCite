@@ -1,0 +1,36 @@
+% Table: Citation hallucination rates by research domain
+\begin{table*}[t]
+\centering
+\caption{Citation hallucination rates (\%) by research domain (40 CS subfields), ranked from highest to lowest.}
+\label{tab:domain_sensitivity}
+\small
+\rowcolors{2}{tableRowLight}{tableRowWhite}
+\begin{tabular}{lrr@{\hskip 2em}lrr}
+\toprule
+\textbf{Domain} & \cellcolor{red!12}\textbf{Halluc.} & \textbf{95\% CI} & \textbf{Domain} & \cellcolor{red!12}\textbf{Halluc.} & \textbf{95\% CI} \\
+\midrule
+DL (Digital Libraries) & \cellcolor{red!28}80.19 & $\pm$3.46 & FL (Formal Languages) & \cellcolor{red!20}49.60 & $\pm$4.32 \\
+OH (Other Hardware) & \cellcolor{red!28}75.38 & $\pm$3.73 & DM (Discrete Math) & \cellcolor{red!20}49.33 & $\pm$4.30 \\
+NI (Network Info.) & \cellcolor{red!28}73.42 & $\pm$3.75 & PL (Prog. Languages) & \cellcolor{red!20}48.40 & $\pm$4.28 \\
+ET (Emerg. Tech.) & \cellcolor{red!28}69.38 & $\pm$3.97 & OS (Operating Sys.) & \cellcolor{red!20}47.96 & $\pm$4.32 \\
+GT (Game Theory) & \cellcolor{red!26}64.04 & $\pm$4.10 & SC (Sound) & \cellcolor{red!18}47.23 & $\pm$4.28 \\
+SY (Symbolic Comp.) & \cellcolor{red!26}63.90 & $\pm$4.12 & NE (Networking) & \cellcolor{red!18}45.58 & $\pm$4.26 \\
+CY (Computers \& Soc.) & \cellcolor{red!26}62.24 & $\pm$4.22 & SD (Software Dev.) & \cellcolor{red!18}45.51 & $\pm$4.34 \\
+AR (Architecture) & \cellcolor{red!24}60.59 & $\pm$4.21 & NA (Num. Analysis) & \cellcolor{red!18}44.01 & $\pm$4.27 \\
+CE (Comp. Eng.) & \cellcolor{red!24}60.58 & $\pm$4.22 & DC (Distributed Comp.) & \cellcolor{red!18}43.96 & $\pm$4.29 \\
+DB (Databases) & \cellcolor{red!24}60.31 & $\pm$4.23 & IT (Info. Theory) & \cellcolor{red!18}43.18 & $\pm$4.23 \\
+SE (Software Eng.) & \cellcolor{red!24}60.26 & $\pm$4.19 & LG (Learning) & \cellcolor{red!16}41.92 & $\pm$4.30 \\
+CR (Cryptography) & \cellcolor{red!24}59.96 & $\pm$4.20 & LO (Logic in CS) & \cellcolor{red!16}41.55 & $\pm$4.28 \\
+HC (Human-Comp. Int.) & \cellcolor{red!24}59.51 & $\pm$4.27 & MS (Math. Software) & \cellcolor{red!14}35.03 & $\pm$4.11 \\
+MM (Multimedia) & \cellcolor{red!24}59.20 & $\pm$4.23 & CV (Comp. Vision) & \cellcolor{red!14}33.64 & $\pm$4.08 \\
+AI (Artificial Intel.) & \cellcolor{red!22}57.32 & $\pm$4.23 & GR (Graphics) & \cellcolor{red!14}32.50 & $\pm$4.07 \\
+PF (Performance) & \cellcolor{red!22}54.63 & $\pm$4.31 & CC (Comp. Complexity) & \cellcolor{red!14}32.23 & $\pm$4.02 \\
+MA (Multiagent Sys.) & \cellcolor{red!22}53.97 & $\pm$4.30 & GL (General Lit.) & \cellcolor{red!12}31.50 & $\pm$4.03 \\
+RO (Robotics) & \cellcolor{red!22}52.21 & $\pm$4.37 & DS (Data Structures) & \cellcolor{red!12}29.76 & $\pm$3.93 \\
+IR (Info. Retrieval) & \cellcolor{red!20}51.05 & $\pm$4.29 & SI (Social/Info. Net.) & \cellcolor{red!12}29.31 & $\pm$3.92 \\
+CG (Comp. Geometry) & \cellcolor{red!20}49.66 & $\pm$4.31 & CL (Comp. Linguistics) & \cellcolor{red!12}28.80 & $\pm$4.00 \\
+\bottomrule
+\end{tabular}\\[0.5em]
+\footnotesize\colorbox{red!15}{\textbf{Halluc.:}} Hallucination rate, the percentage of citations verified as invalid.
+\end{table*}
+

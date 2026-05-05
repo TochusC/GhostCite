@@ -1,0 +1,174 @@
+% NDSS 2027 Paper Template
+% Based on NDSS 2026 template (IEEEtran.cls)
+% Modified for GhostCite project
+
+\documentclass[conference]{style/IEEEtran}
+
+% Add style/ to search path
+\makeatletter
+\providecommand*\input@path{}
+\g@addto@macro\input@path{{style/}}
+\makeatother
+
+% Packages
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, calc, fit, backgrounds}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cite}
+\usepackage{subcaption}
+\usepackage{textcomp}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{xspace}
+\usepackage{balance}
+\usepackage{threeparttable}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage[most]{tcolorbox}
+
+% Custom macros
+\newcommand{\citeb}{{\textsc{CiteVerifier}}\xspace}
+\newcommand{\citebb}{{\textsc{\textbf{CiteVerifier}}}\xspace}
+\newcommand{\system}{GhostCite}
+\newcommand{\ie}{i.e.,}
+\newcommand{\eg}{e.g.,}
+\newcommand{\etal}{et al.}
+
+% Cleveref settings
+\crefname{section}{Section}{Sections}
+\crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+\crefname{equation}{Equation}{equations}
+\crefname{algocf}{Algorithm}{algorithms}
+\crefname{appendix}{Appendix}{appendices}
+
+% GhostCite paper color palette
+\definecolor{paperPrimary}{HTML}{8888EE}
+\definecolor{paperPrimaryLight}{HTML}{FAFAFF}
+\definecolor{paperAlert}{HTML}{C75B39}
+\definecolor{paperAlertLight}{HTML}{FFF0E6}
+\definecolor{paperPositive}{HTML}{2E7D32}
+
+% Table row stripes
+\definecolor{tableRowLight}{gray}{0.95}
+\definecolor{tableRowWhite}{gray}{1.0}
+\definecolor{colGroupBlue}{HTML}{E8F4F8}
+\definecolor{colGroupOrange}{HTML}{FFF0E6}
+\definecolor{legendBlue}{HTML}{2E7D9A}
+\definecolor{legendOrange}{HTML}{C75B39}
+
+% Author/todo colors
+\definecolor{NKU}{HTML}{711a5f}
+\definecolor{GiantsOrange}{HTML}{fe5a1d}
+
+% Colored text commands
+\newcommand\xzy[1]{{\textcolor{NKU}{#1}}}
+\newcommand\todo[1]{{\textcolor{GiantsOrange}{#1}}}
+\newcommand\note[1]{{\textcolor{red}{\textit{#1}}}}
+\newcommand{\mfs}[1]{{\color{red}{\{Miao: #1\}}}}
+
+% Page style
+\pagestyle{plain}
+
+% Correct bad hyphenation
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+% tcolorbox environments
+\newtcolorbox{keyfindingsSidebar}[1]{
+	enhanced,
+	colback=white,
+	colframe=paperPrimaryLight,
+	boxrule=0pt,
+	arc=0pt,
+	left=8pt,
+	right=8pt,
+	top=8pt,
+	bottom=8pt,
+	borderline west={4pt}{0pt}{paperPrimary},
+	coltitle=paperPrimary,
+	fonttitle=\bfseries\small,
+	title={#1},
+	before skip=8pt,
+	after skip=8pt
+}
+
+\newtcolorbox{casestudybox}[1]{
+	enhanced,
+	colback=white,
+	colframe=black!86,
+	boxrule=1pt,
+	arc=3pt,
+	left=2pt,
+	right=8pt,
+	top=4pt,
+	bottom=3pt,
+	fonttitle=\bfseries\small,
+	title={#1},
+	colbacktitle=black!60,
+	coltitle=white!55,
+	before skip=8pt,
+	after skip=8pt
+}
+
+\begin{document}
+
+% Title
+\title{\textsc{GhostCite}: A Large-Scale Analysis of Citation Validity in the Age of Large Language Models}
+
+% Author information - BLANK for double-blind review
+% DO NOT include author names or affiliations
+\author{\IEEEauthorblockN{Anonymous Author(s)}}
+
+% NDSS publication info
+\IEEEoverridecommandlockouts
+\makeatletter\def\@IEEEpubidpullup{6.5\baselineskip}\makeatother
+\IEEEpubid{\parbox{\columnwidth}{
+		Network and Distributed System Security (NDSS) Symposium 2027\\
+	\relax [Dates TBD], San Diego, CA, USA\\
+	\relax ISBN [TBD]\\
+	\relax https://dx.doi.org/10.14722/ndss.2027.[TBD]\\
+	\relax www.ndss-symposium.org
+}
+\hspace{\columnsep}\makebox[\columnwidth]{}}
+
+\maketitle
+
+% Abstract
+\input{0_abstract}
+
+% No keywords for NDSS
+
+\IEEEpeerreviewmaketitle
+
+% Body sections
+\input{section/1_introduction}
+\input{section/2_background}
+\input{section/3_methodology}
+\input{section/4_experiment}
+\input{section/5_llm_results}
+\input{section/6_paper_results}
+\input{section/7_survey_results}
+\input{section/8_discussion}
+\input{section/9_conclusion}
+
+% Ethics section (optional for NDSS, placed before references)
+\input{section/ethics}
+
+% Acknowledgments
+\section*{Acknowledgment}
+% Anonymous for review
+
+% References
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+% Appendix
+\appendix
+\input{appendix/1_appendix}
+
+\end{document}

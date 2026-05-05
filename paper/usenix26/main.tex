@@ -1,0 +1,206 @@
+\documentclass[letterpaper,twocolumn,10pt]{article}
+\usepackage{usenix}
+\usepackage{xurl}
+% to be able to draw some self-contained figs
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, calc, fit, backgrounds}
+\usepackage{amsmath}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{textcomp}
+\usepackage[dvipsnames,table]{xcolor}
+\pagestyle{plain}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{longtable}
+% for better referencing
+\usepackage{xspace}
+\usepackage{balance}
+\usepackage{threeparttable}
+\usepackage{cleveref}
+\newcommand{\citeb}{{\textsc{CiteVerifier}}\xspace}
+\newcommand{\citebb}{{\textsc{\textbf{CiteVerifier}}}\xspace}
+\crefname{section}{Section}{Sections}
+\crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+\crefname{equation}{Equation}{equations}
+\crefname{algocf}{Algorithm}{algorithms}
+\crefname{appendix}{Appendix}{appendices}
+
+%-------------------------------------------------------------------------------
+% GhostCite paper color palette (use these consistently in tables, figures, TikZ)
+%-------------------------------------------------------------------------------
+% 1. Primary (Valid / Success):  #6666EE  -- valid citations, total counts, main accent
+%-------------------------------------------------------------------------------
+\definecolor{paperPrimary}{HTML}{8888EE}    % Teal: valid, main
+\definecolor{paperPrimaryLight}{HTML}{FAFAFF}
+\definecolor{paperAlert}{HTML}{C75B39}      % Orange: invalid, hallucination
+\definecolor{paperAlertLight}{HTML}{FFF0E6}
+\definecolor{paperPositive}{HTML}{2E7D32}   % Green: success, improvement (optional)
+
+% Table row stripes
+\definecolor{tableRowLight}{gray}{0.95}
+\definecolor{tableRowWhite}{gray}{1.0}
+% Column-group / legend (aliased to palette)
+\definecolor{colGroupBlue}{HTML}{E8F4F8}
+\definecolor{colGroupOrange}{HTML}{FFF0E6}
+\definecolor{legendBlue}{HTML}{2E7D9A}
+\definecolor{legendOrange}{HTML}{C75B39}
+\usepackage[most]{tcolorbox}
+\usepackage{fontawesome5}
+
+% Author/todo (can keep or switch to paperAlert)
+\definecolor{NKU}{HTML}{711a5f}
+\definecolor{GiantsOrange}{HTML}{fe5a1d}
+
+% Some commands for colored text
+\newcommand\xzy[1]{{\textcolor{NKU}{#1}}}
+\newcommand\todo[1]{{\textcolor{GiantsOrange}{#1}}}
+\newcommand\note[1]{{\textcolor{red}{\textit{#1}}}}
+
+
+\newcommand{\mfs}[1]{{\color{red}{\{Miao: #1\}}}}
+
+% Key findings box for measurement sections
+\newtcolorbox{keyfindings}[1]{
+	enhanced,
+	colback=paperPrimaryLight,
+	colframe=paperPrimary,
+	boxrule=0.6pt,
+	arc=1pt,
+	left=10pt,
+	right=8pt,
+	top=8pt,
+	bottom=6pt,
+	borderline west={3pt}{0pt}{paperPrimary},
+	coltitle=white,
+	fonttitle=\bfseries\small,
+	title={\faLightbulb\ Key Findings: #1},
+	attach boxed title to top left={yshift=-2mm,xshift=4mm},
+	boxed title style={
+		colback=paperPrimary,
+		colframe=black,
+		sharp corners,
+		left=6pt,
+		right=6pt,
+		top=2pt,
+		bottom=2pt
+	},
+	before skip=8pt,
+	after skip=8pt
+}
+
+\newtcolorbox{keyfindingsSidebar}[1]{
+	enhanced,
+	colback=white,
+	colframe=black!86,
+	boxrule=1pt,
+	arc=3pt,
+	left=2pt,
+	right=8pt,
+	top=10pt,
+	bottom=4pt,
+	borderline west={4pt}{0pt}{paperPrimary},
+	coltitle=paperPrimary,
+	fonttitle=\bfseries\small,
+	title={\faListUl\ Key Findings: #1},
+	attach boxed title to top left={yshift=-3mm,xshift=3mm},
+	boxed title style={
+		colback=paperPrimary,
+		colframe=black!86,
+		arc=2pt,
+		left=2pt,
+		right=2pt,
+		top=0pt,
+		bottom=0pt
+	},
+	coltitle=white!66,
+	before upper={\setlength{\itemsep}{-4pt}\setlength{\topsep}{-2pt}\setlength{\partopsep}{0pt}\setlength{\parsep}{0pt}},
+	before skip=8pt,
+	after skip=8pt
+}
+
+
+\newtcolorbox{casestudybox}[1]{
+	enhanced,
+	colback=white,
+	colframe=black!86,
+	boxrule=1pt,
+	arc=3pt,
+	left=2pt,
+	right=8pt,
+	top=4pt,
+	bottom=3pt,
+	fonttitle=\bfseries\small,
+	title={\faSearch\ #1},
+	colbacktitle=black!60,
+	coltitle=white!55,
+	before skip=8pt,
+	after skip=8pt
+}
+
+%-------------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------------
+
+%don't want date printed
+\date{}
+
+
+% make title bold and 14 pt font (Latex default is non-bold, 16 pt)
+\title{\textsc{GhostCite}: A Large-Scale Analysis of Citation Validity in the Age of\\Large Language Models}
+% \title{{Ghost Citation}: A Large-Scale Analysis of Citation Validity in the Age of\\Large Language Models}
+
+
+\author{Paper \#1144\\Anonymous Author(s)}
+
+
+\maketitle
+
+%-------------------------------------------------------------------------------
+\begin{abstract}
+\input{0_Abstract}
+\end{abstract}
+
+\input{1_Introduction}
+\input{2_Background}
+\input{3_Methodology}
+\input{4_Experiment.tex}
+\input{5_LLM_Results}
+\input{6_Paper_Results}
+\input{7_Survey_Results}
+\input{8_Discussion}
+\input{9_Conclusion}
+
+\newpage
+\input{Ethical_Consideration}
+\input{Open_Science}
+%-------------------------------------------------------------------------------
+% \section*{Acknowledgments}
+% %-------------------------------------------------------------------------------
+
+% The USENIX latex style is old and very tired, which is why
+% there's no \textbackslash{}acks command for you to use when
+% acknowledging. Sorry.
+
+% \textbf{Do not include any acknowledgements in your submission which may deanonymize you (e.g., because of specific affiliations or grants you acknowledge)}
+
+%-------------------------------------------------------------------------------
+\bibliographystyle{plainurl}
+\bibliography{refs}
+
+\balance
+\newpage
+\appendix
+\input{Appendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%  LocalWords:  endnotes includegraphics fread ptr nobj noindent
+%%  LocalWords:  pdflatex acks
+

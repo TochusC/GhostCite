@@ -1,0 +1,34 @@
+% Table: Invalid citations by conference (Error vs Ghost breakdown)
+\begin{table}[t]
+  \centering
+  \begin{threeparttable}
+    \caption{Invalid citations by conference. (sorted by invalid citation number)}
+    \label{tab:invalid_by_venue}
+    \small
+\rowcolors{2}{tableRowLight}{tableRowWhite}
+\begin{tabular}{lrrrrr}
+\toprule
+\multicolumn{1}{l}{\textbf{Conf.}} & \multicolumn{1}{l}{\textbf{Error}} & \multicolumn{1}{l}{\textbf{Ghost}} & \multicolumn{1}{l}{\textbf{Invalid}} & \multicolumn{1}{l}{\textbf{Papers}} & \multicolumn{1}{l}{\cellcolor{red!20}\textbf{Rate}} \\
+\midrule
+NeurIPS & 59 & 332 & 391 & 308 & \cellcolor{red!35}1.51\% \\
+ICML & 22 & 103 & 125 & 104 & \cellcolor{red!25}0.93\% \\
+AAAI & 21 & 85 & 106 & 86 & \cellcolor{red!22}0.62\% \\
+IJCAI & 11 & 42 & 53 & 51 & \cellcolor{red!23}0.96\% \\
+\midrule
+NDSS & 4 & 19 & 23 & 18 & \cellcolor{red!33}2.56\% \\
+CCS & 11 & 9 & 20 & 20 & \cellcolor{red!25}1.14\% \\
+USENIX & 6 & 6 & 12 & 11 & \cellcolor{red!20}0.57\% \\
+S\&P & 1 & 7 & 8 & 6 & \cellcolor{red!22}0.56\% \\
+\midrule
+\textbf{Total} & \textbf{135} & \textbf{603} & \textbf{738} & \textbf{604} & \cellcolor{red!30}\textbf{1.07\%} \\
+\bottomrule
+\end{tabular}
+    \begin{tablenotes}
+      \footnotesize
+      \item \textbf{Conf.:} Conference acronym.
+\textbf{Invalid:} Error + Ghost citations;\\
+\colorbox{red!22}{\textbf{Rate:}} percentage of papers with invalid citations.
+    \end{tablenotes}
+  \end{threeparttable}
+\end{table}
+

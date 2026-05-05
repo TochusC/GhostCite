@@ -1,0 +1,29 @@
+\section*{Ethical Considerations}
+\label{sec:ethics}
+In this section, we discuss the ethical considerations of our study and how they were addressed in our implementation of \citeb and the associated measurements.
+
+\noindent\textbf{Responsible Use of External Services.}
+\label{sec:ethical_use_external_services}
+All LLMs and external services were accessed in compliance with their respective terms of service and usage guidelines.
+We applied rate limiting and conservative request schedules to avoid overloading provider infrastructure, and we did not use adversarial or harmful prompts, following the Menlo report~\cite{bailey2012menlo}.
+
+\noindent\textbf{Data Access and Stewardship.}
+\label{sec:data_stewardship}
+Paper collection relied on publicly accessible proceedings and institutionally authorized access by our research team.
+For open-access venues, we used DBLP to obtain DOI links and downloaded papers via automated scripts; for venues that provide full proceedings, we downloaded the proceedings and split PDFs by the table of contents; for access-restricted venues, we used automated browser control to mimic manual downloads under institutional access.
+We enforced a 5-second delay between downloads to avoid server burden, and any access-restricted papers were retrieved only through the researchers' institutional access rights.
+All papers are used solely for academic research, and no portion of the corpus has been redistributed or disseminated to the outside.
+
+\noindent\textbf{Human Subjects and Privacy.}
+The survey received IRB approval from our institution prior to data collection.
+Participants were recruited through two transparent channels: we published the survey link on social media platforms, and we randomly sampled 300 researchers from program committees and author lists of top-tier venues for direct email outreach through their institutional or publicly available email addresses.
+The survey provided full transparency to participants, including detailed explanation of the research purpose, methodology, contact information for the research team, and an explicit opt-out mechanism allowing withdrawal at any point.
+The questionnaire did not solicit personally identifiable information; all responses were stored securely in de-identified form and have not been shared outside the research.
+% team.
+
+\noindent\textbf{Anonymization of Papers with Invalid Citations.}
+Following the precedent of meta-science studies that critically examine published work~\cite{schloegel2025confusing}, we decided not to disclose the identities of specific papers containing invalid citations in the submitted manuscript.
+Our goal is not to blame individual authors, institutions, or papers, but to inform and spark constructive discussion around a widespread phenomenon: the presence of ghost citations (untraceable or fabricated references) in the scientific record, that affects the entire research community.
+Invalid citations may arise for various reasons (e.g., researcher oversight, uncritical adoption of LLM-generated content, or gaps in verification workflows) and do not necessarily constitute evidence of intent.
+We acknowledge that causality and attribution are complex; our focus is on systemic patterns rather than individual cases.
+We welcome feedback from reviewers on how best to balance transparency with proportionality in addressing this emerging challenge.

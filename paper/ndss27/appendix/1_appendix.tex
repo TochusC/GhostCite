@@ -1,0 +1,142 @@
+\section{Appendix}
+
+In the appendix, we provide additional details on our study that are not included in the main text due to space constraints.
+
+\subsection{Models Evaluated}
+
+Table~\ref{tab:models_evaluated} lists the 13 LLMs used in our benchmark and their access interfaces.
+
+\input{Tables/Sec5_LLM/tab_models_evaluated.tex}
+
+\subsection{Research Domain Codes}
+\label{app:domain_codes}
+
+\cref{tab:domain_codes} provides the mapping between domain abbreviation codes and their full names, as used in the LLM citation generation experiment (Section~\ref{sec:llm_results}).
+These 40 domains cover the major areas of computer science as categorized by arXiv.
+
+\subsection{LLM Citation Generation Prompt}
+\label{app:llm_citation_prompt}
+
+\input{Tex/Appendix/citation_prompt}
+
+\subsection{LLM Citation Validity Judgment Prompt}
+\label{app:llm_judge_prompt}
+
+
+The following prompt was used in our auxiliary experiment where each model judged whether a bibliographic entry corresponds to a real publication.
+
+\begin{quote}
+\small
+You are a rigorous academic fact-checking assistant. You will receive one bibliographic entry with fields: Cite Title, Authors, Year, Venue. Decide whether it corresponds to a real academic publication where the combination of title, authors, year, and venue is accurate.
+
+[Task]
+- Judge a single entry.
+- Output ONLY a JSON object with exactly two fields: "result" and "reason".
+- "result" should be true or false (lowercase, JSON boolean). If you judge the entry corresponds to a real publication, output true; otherwise output false.
+- "reason" should be a short reason (1-3 sentences).
+- No extra keys, no markdown, no surrounding text.
+
+Entry:
+Cite Title: {title}
+Authors: {authors}
+Year: {year}
+Venue: {venue}
+\end{quote}
+
+\subsection{Factors Affecting Hallucination Rates}
+
+In this section, we provide additional analysis on factors that may influence citation hallucination rates in LLMs, including the impact of online search and chain-of-thought prompting, batch size effects, and domain-level sensitivity.
+
+\paragraph{Online Search and Chain-of-Thought Impact}
+\label{app:online_impact}
+
+\Cref{tab:online_impact} reports citation hallucination rates with online search and chain-of-thought prompting versus baseline settings, along with per-model differences.
+These settings are controlled through a third-party API aggregation interface, so results reflect the API-level toggles we could access rather than each vendor's full native retrieval or reasoning stack.
+\input{Tables/Sec5_LLM/tab_online_impact}
+
+\paragraph{Batch Size Impact on Hallucination Rates}
+
+% \input{Tables/Appendix/tab_batch_size}
+
+\label{app:batch_size}
+
+
+
+Table~\ref{tab:batch_size} presents the detailed breakdown of citation hallucination rates by batch size (10, 20, and 30 citations per prompt) for all 13 models.
+The results show no consistent correlation between batch size and hallucination rates, suggesting that hallucination reflects fundamental limitations in the models' bibliographic knowledge rather than output quantity constraints.
+
+% \input{Tables/Appendix/tab_batch_size}
+
+\subsection{Domain-Level Hallucination Rates}
+\label{app:domain_sensitivity}
+
+
+
+
+Table~\ref{tab:domain_sensitivity} presents citation hallucination rates by research domain (40 CS subfields), aggregated across all 13 models and ranked from highest to lowest.
+
+\input{Tables/Appendix/tab_domain_sensitivity}
+
+\input{Tables/Appendix/tab_citation_stability}
+
+
+
+\subsection{Citation Stability and Cross-Model Overlap}
+
+
+
+\label{app:stability_overlap}
+
+We provide additional analysis of citation stability across repeated runs and cross-model overlap patterns.
+\Cref{tab:citation_stability} reports stability statistics for valid versus hallucinated citations,  while \Cref{fig:cross_model_overlap} visualizes pairwise overlap of generated citation sets using the Extended Jaccard similarity (percentage).
+Diagonal cells are 100\% by definition, and off-diagonal values indicate how similar two models' generated citations are for the same prompts.
+Higher overlap suggests more similar citation preferences across models, while lower overlap indicates greater divergence in the generated reference sets under identical prompts.
+We observe that some model pairs (e.g. GLM4.5, DeepSeek, Qwen-3) exhibit comparatively higher overlap, indicating closer citation preferences.
+
+Table~\ref{tab:most_cited_by_topic} presents the most frequently generated valid citations for each of the 40 research domains in our LLM benchmark experiment.
+These papers represent the references that LLMs most consistently recall, suggesting they are strongly encoded in the models' parametric memory due to high frequency in training data.
+Seminal works such as ``NeRF'' (Graphics), ``RAG'' (Computation \& Language), and ``U-Net'' (Computer Vision) appear at the top, reflecting the influence of foundational papers in each field.
+
+
+
+
+
+\input{Figures/Appendix/cross_model_overlap}
+
+
+\subsection{Paper Collection Statistics}
+\label{app:collected_papers}
+
+\input{Tables/Appendix/tab_batch_size}
+
+
+Table~\ref{tab:collected_papers} presents the complete breakdown of papers collected by conference and year (2020--2025) for our archival analysis.
+
+\input{Tables/Appendix/tab_collected_papers.tex}
+
+\subsection{Repeated Invalid Citations in Published Papers}
+\label{app:repeated_citations}
+
+Table~\ref{tab:repeated_citation_errors} presents invalid citations (e.g., metadata or title errors) that appear in multiple independent published papers across our corpus of 56,381 papers.
+These ``repeated invalid citations'' demonstrate how citation mistakes propagate when researchers copy references from papers that already contain errors.
+The most frequently occurring invalid citation (a malformed title, e.g., ``Augmix'' instead of ``AugMix'') appears in 16 separate papers across IJCAI, NeurIPS, and AAAI.
+Notably, ``DeepIP'' appears across both AI and Security venues (USENIX, CCS, NeurIPS), indicating cross-domain propagation of citation errors.
+
+
+\subsection{Survey Response Details (Full)}
+\label{app:survey_details_full}
+
+\cref{tab:survey_details_full_a1,tab:survey_details_full_a2,tab:survey_details_full_b1,tab:survey_details_full_b2} provide the complete numerical breakdown of all survey responses (N=94 valid responses, 97 total), including every response option for adoption, verification, severity, responsibility, support for automated tools, risky behaviors, reviewer reactions, text polishing, primary metadata source, and claim verification frequency. The question wording and numbering map is shown in \cref{tab:survey_question_map}.
+
+\input{Tables/Appendix/tab_domain_codes}
+
+\input{Tables/Appendix/tab_most_cited_by_topic}
+
+\input{Tables/Appendix/tab_repeated_citation_errors}
+
+\input{Tables/Appendix/tab_survey_question_map}
+
+\input{Figures/Sec7_Survey/all_questions_overview}
+
+\input{Tables/Appendix/tab_survey_details_full}
+

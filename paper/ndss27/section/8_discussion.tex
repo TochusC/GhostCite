@@ -1,0 +1,87 @@
+\section{Discussion and Mitigation}
+\label{sec:discussion}
+
+
+Through our comprehensive study on citation validity, we show that ghost citations constitute a systemic threat to scholarly trust: fabricated references can enter and persist in the literature because existing verification practices are sparse and largely trust-based.
+Below, we characterize the lifecycle of this threat and propose targeted interventions.
+%-------------------------------------------------------------------------------
+\subsection{The Lifecycle of Ghost Citations}
+
+Our studies collectively map a ``pollution pipeline'' through which ghost citations propagate from LLM outputs to the permanent scientific record.
+Understanding this pipeline is essential for designing effective interventions at each stage.
+
+\noindent
+\textbf{Stage 1: Generation.}
+LLMs do not retrieve citations from verified databases; instead, they ``stitch'' together plausible combinations of real author names, terminology, and venues, producing ghost citations that are syntactically perfect yet factually non-existent.
+
+\noindent
+\textbf{Stage 2: Adoption.}
+The high surface plausibility of ghost citations exploits researchers' cognitive offloading, where they trust automated outputs without verification, performing only superficial checks (e.g., confirming the title ``looks reasonable'') rather than rigorous validation.
+
+\noindent
+\textbf{Stage 3: Review Failure.}
+Reviewers lack the capacity and time to verify each citation; moreover, academic trust protocols assume authors cite in good faith, so reviewers rarely question whether cited works exist.
+This combination allows invalid citations to pass through review undetected.
+
+\noindent
+\textbf{Stage 4: Publication and Propagation.}
+Once published, ghost citations become permanent fixtures.
+Our discovery of ``repeated invalid citations'' (appearing in up to 16 papers) reveals that researchers copy citations from existing papers, compounding errors across the literature.
+
+Together, these four stages form a self-reinforcing pipeline that creates \textit{an illusion of evidential support} while contaminating the citation graph with phantom nodes and invalid edges.
+Left unchecked, this contamination threatens to fundamentally undermine scholarly communication: as fabricated citations accumulate, the research community may be forced to shift from its foundational presumption of trust to one of systematic skepticism, imposing unsustainable verification burdens on every researcher.
+\textit{We urgently call for coordinated action to disrupt this pipeline at multiple points} before the problem becomes intractable.
+
+%-------------------------------------------------------------------------------
+\subsection{Mitigation and Recommendations}
+
+Based on our findings, we propose interventions targeting each stakeholder group.
+\textit{Addressing ghost citations requires coordinated action} across the entire publication ecosystem; no single stakeholder can solve this problem in isolation.
+Effective mitigation demands disrupting the pollution pipeline at multiple stages, from generation to publication.
+Below, we outline actionable recommendations for researchers, venue organizers, AI developers, and the research community.
+
+\noindent
+\textbf{For Researchers.}
+Verify every AI-generated output before adoption, whether citations, literature summaries, or draft text.
+Our data shows that even high-performing models fabricate, so we recommend retrieval-grounded tools over purely generative ones and heightened caution when AI output falls outside verifiable domains (e.g., recent citations, unfamiliar subfields).
+At minimum, check each cited title in a trusted index and treat missing DOIs or inconsistent metadata as red flags; avoid copy-pasting BibTeX entries without verification.
+
+\noindent
+\textbf{For Conference and Journal Organizers.}
+Deploy automated citation verification in submission systems (our survey shows 70.2\% strong support), require authors to attest that citations have been verified, provide lightweight verification tools to reviewers, and establish clear policies on AI-assisted citation generation.
+Require structured reference metadata at submission (e.g., BibTeX) and provide reviewers with a compact citation-risk summary to enable targeted checks without increasing burden.
+
+% \xl{提交论文的同时，提交bib格式的参考文献}
+% \xl{然后一个题外话，我们是否能为hotcrp开源网站开发一个检测的功能，因为是开源的，接入我们开发出来的检测API}
+
+
+\noindent
+\textbf{For AI Tool Developers.}
+Ground outputs in retrieval from verified sources when factual accuracy matters. Clearly distinguish retrieved from generated content and prompt users to verify before finalizing. Enforce structured outputs with evidence fields (DOI, URL, or database identifier), and surface "not found" signals instead of fabricating metadata.
+
+\noindent
+\textbf{For the Research Community.}
+Develop shared verification infrastructure and norms for AI-assisted bibliography construction, invest in detection research, and conduct regular measurement studies to track trends.
+Build open validation APIs and benchmark datasets, and standardize reporting so policies and tools can evolve with evidence.
+
+
+
+%-------------------------------------------------------------------------------
+\subsection{Limitations}
+
+We conducted the first comprehensive, multi-dimensional investigation of ghost citations in the LLM era, developing an automated verification framework and analyzing over 2.2 million citations alongside systematic LLM benchmarking and user surveys.
+While our work provides critical empirical evidence of this emerging threat, we acknowledge that our study may have several limitations:
+
+
+\noindent
+\textbf{Online/CoT Configuration Limits.}
+We enabled online-search/chain-of-thought via third-party API flags. These may not activate vendors' full native toolchains, so the online-vs-offline comparison reflects interface-level settings rather than definitive vendor performance.
+
+\noindent
+\textbf{Detection and Verification Limitations.}
+Our pipeline verifies only title similarity, reflecting our goal of detecting \emph{ghost citations} (references that cannot be traced or do not exist) rather than \emph{citation errors}.
+This conservative approach may undercount hallucinations that closely resemble real papers, while some flagged citations may be legitimate but poorly indexed works; our manual verification addresses the latter, but false negatives remain a limitation. 
+\textit{The detected invalid citations are likely to be a conservative lower bound} on the true hallucination rate.
+To mitigate human bias in manual verification, each flagged citation was double-checked by independent reviewers to ensure accuracy.
+However is still possible that some internal or poorly indexed papers were misclassified as invalid citations.
+
