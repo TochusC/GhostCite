@@ -12,6 +12,7 @@
 
 % Packages
 \usepackage{graphicx}
+\usepackage{fontawesome5}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta, positioning, shapes.geometric, calc, fit, backgrounds}
 \usepackage{amsmath}
@@ -82,7 +83,9 @@
 \hyphenation{op-tical net-works semi-conduc-tor}
 
 % tcolorbox environments
-\newtcolorbox{keyfindingsSidebar}[1]{
+\newcounter{keyfindingcounter}
+\newtcolorbox{keyfindingsSidebar}[1][]{
+	code={\refstepcounter{keyfindingcounter}},
 	enhanced,
 	colback=white,
 	colframe=paperPrimaryLight,
@@ -95,7 +98,7 @@
 	borderline west={4pt}{0pt}{paperPrimary},
 	coltitle=paperPrimary,
 	fonttitle=\bfseries\small,
-	title={#1},
+	title={\textcolor{paperPrimary}{\faLightbulb}\ Keyfinding \thekeyfindingcounter: #1},
 	before skip=8pt,
 	after skip=8pt
 }
