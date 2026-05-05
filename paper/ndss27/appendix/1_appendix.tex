@@ -81,29 +81,6 @@ Table~\ref{tab:domain_sensitivity} presents citation hallucination rates by rese
 
 
 
-\subsection{Citation Stability and Cross-Model Overlap}
-
-
-
-\label{app:stability_overlap}
-
-We provide additional analysis of citation stability across repeated runs and cross-model overlap patterns.
-\Cref{tab:citation_stability} reports stability statistics for valid versus hallucinated citations,  while \Cref{fig:cross_model_overlap} visualizes pairwise overlap of generated citation sets using the Extended Jaccard similarity (percentage).
-Diagonal cells are 100\% by definition, and off-diagonal values indicate how similar two models' generated citations are for the same prompts.
-Higher overlap suggests more similar citation preferences across models, while lower overlap indicates greater divergence in the generated reference sets under identical prompts.
-We observe that some model pairs (e.g. GLM4.5, DeepSeek, Qwen-3) exhibit comparatively higher overlap, indicating closer citation preferences.
-
-Table~\ref{tab:most_cited_by_topic} presents the most frequently generated valid citations for each of the 40 research domains in our LLM benchmark experiment.
-These papers represent the references that LLMs most consistently recall, suggesting they are strongly encoded in the models' parametric memory due to high frequency in training data.
-Seminal works such as ``NeRF'' (Graphics), ``RAG'' (Computation \& Language), and ``U-Net'' (Computer Vision) appear at the top, reflecting the influence of foundational papers in each field.
-
-
-
-
-
-\input{figure/Appendix/cross_model_overlap}
-
-
 \subsection{Paper Collection Statistics}
 \label{app:collected_papers}
 

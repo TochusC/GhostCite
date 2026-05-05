@@ -57,10 +57,9 @@ This finding suggests that \textit{LLMs preferentially hallucinate citations wit
 \input{figure/Sec5_LLM/temporal_distribution_barplot}
 
 \noindent
-\textbf{Stability, Overlap, and Recurrence.}
-We further analyze the stability of generated citations of each model and the generated citation overlap across models. Valid citations are notably more stable across runs (mean up to 0.58 for DeepSeek and 0.57 for Qwen-3), while hallucinated ones are less stable (mean up to 0.23).
+\textbf{Stability and Recurrence.}
+We further analyze the stability of generated citations across repeated runs. Valid citations are notably more stable (mean up to 0.58 for DeepSeek and 0.57 for Qwen-3), while hallucinated ones are less stable (mean up to 0.23).
 Consistent with this, the citations that recur most often are well-known, highly represented papers in model training data, such as ``NeRF'' in Graphics, ``RAG'' in NLP, and ``U-Net'' in Computer Vision; less prominent long-tail works are more prone to hallucination.
-The detailed stability and overlap analysis is provided in Appendix~\ref{app:stability_overlap}
 
 
 \subsection{LLM Citation Validation Performance}
