@@ -61,17 +61,15 @@ GhostCite/
 - [x] User survey (94 valid responses)
 - [x] NDSS template configured (`paper/ndss27/`)
 - [x] PDF compiles successfully
+- [x] NDSS 2027 submission completed
 
 ### In Progress 🔄
-- [ ] Adapt content emphasis for NDSS audience (systems/network security angle)
-- [ ] Verify 13-page body limit (excluding ethics, references, appendix)
-- [ ] Double-blind compliance check (author anonymization, third-person self-citations)
+- [ ] Under review at NDSS 2027
 
 ### Pending 📋
-- [ ] Final page count verification
-- [ ] Conflict-of-interest declaration
-- [ ] Final proofread and consistency check
-- [ ] Cover letter preparation
+- [ ] Await reviewer decisions
+- [ ] Prepare for potential Major/Minor Revision
+- [ ] Prepare rebuttal materials if needed
 
 ---
 

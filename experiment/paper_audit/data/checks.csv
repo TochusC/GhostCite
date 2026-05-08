@@ -1,0 +1,7 @@
+Conference,Total,ExtractionError,NonArticle,Valid,Invalid
+AAAI,499,84,56,250,108
+ICML,1181,723,90,236,132
+IJCAI,385,25,67,237,56
+NeurIPS,2208,1031,206,570,401
+Usenix,111,21,71,6,13
+SP

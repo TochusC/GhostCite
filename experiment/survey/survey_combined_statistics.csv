@@ -1,0 +1,244 @@
+Question,Option,Count,Percentage
+position,Undergraduate student,15,15.5%
+position,Master's Student,19,19.6%
+position,PhD Student,33,34.0%
+position,Postdoc,6,6.2%
+position,Faculty (Professor/Lecturer),17,17.5%
+position,Researcher,5,5.2%
+position,Other,2,2.1%
+research_area,AI Security,13,13.4%
+research_area,Network Security,19,19.6%
+research_area,System Security,10,10.3%
+research_area,Cryptography,6,6.2%
+research_area,Software Engineering,4,4.1%
+research_area,AI & Machine Learning,20,20.6%
+research_area,Other,25,25.8%
+papers_published,0,22,22.7%
+papers_published,1-5,46,47.4%
+papers_published,6-10,16,16.5%
+papers_published,11-20,6,6.2%
+papers_published,20+,7,7.2%
+native_english,Yes,5,5.2%
+native_english,No,92,94.8%
+is_reviewer,Yes,32,33.0%
+is_reviewer,No,65,67.0%
+use_ai_tools,Yes,74,76.3%
+use_ai_tools,No,13,13.4%
+use_ai_tools,Browsing conference proceedings,2,2.1%
+use_ai_tools,Keyword search on Google Scholar/DBLP,3,3.1%
+use_ai_tools,Following citations from other papers,4,4.1%
+use_ai_tools,"Using AI-powered tools (e.g., ChatGPT, Connected Papers)",1,1.0%
+ai_tool_types,"General-purpose LLMs (e.g., ChatGPT, Claude, Gemini)",74,76.3%
+ai_tool_types,"Coding Assistants (e.g., GitHub Copilot, Cursor)",38,39.2%
+ai_tool_types,"Academic search engines (e.g., Elicit, Semantic Scholar)",7,7.2%
+ai_tool_types,"AI-powered reading tools (e.g., ChatPDF, Humata)",7,7.2%
+ai_tool_types,Yes,8,8.2%
+ai_tool_types,No,2,2.1%
+ai_text_polish,"Yes, for almost every sentence",24,24.7%
+ai_text_polish,"Yes, for specific difficult paragraphs",34,35.1%
+ai_text_polish,"Yes, but only for final proofreading",15,15.5%
+ai_text_polish,"No, I trust my own writing more",1,1.0%
+ai_text_polish,"General-purpose LLMs (e.g., ChatGPT, Claude, Gemini)",8,8.2%
+ai_text_polish,"Coding Assistants (e.g., GitHub Copilot, Cursor)",5,5.2%
+ai_citation_usage,Formatting,22,22.7%
+ai_citation_usage,Discovery,23,23.7%
+ai_citation_usage,Gap-filling,16,16.5%
+ai_citation_usage,Summarization,17,17.5%
+ai_citation_usage,Verification,6,6.2%
+ai_citation_usage,None,36,37.1%
+ai_citation_usage,"Yes, for specific difficult paragraphs",4,4.1%
+ai_citation_usage,"Yes, for almost every sentence",1,1.0%
+ai_citation_usage,"Yes, but only for final proofreading",2,2.1%
+ai_citation_usage,"No, I trust my own writing more",1,1.0%
+hallucination_freq,Very Often (>50%),7,7.2%
+hallucination_freq,Often (20-50%),25,25.8%
+hallucination_freq,Occasionally (<20%),15,15.5%
+hallucination_freq,Never,4,4.1%
+hallucination_freq,Don't use LLMs,19,19.6%
+hallucination_freq,I do not use General LLMs for finding references,2,2.1%
+hallucination_freq,Very Often (>50% of the time),2,2.1%
+hallucination_freq,"Formatting: Converting references into specific formats (e.g., BibTeX)",3,3.1%
+hallucination_freq,Summarization: Asking AI to summarize a paper to decide whether to cite it,1,1.0%
+hallucination_freq,Discovery: Asking AI to recommend papers on a specific topic,4,4.1%
+hallucination_freq,Verification: Asking AI if a specific paper exists,1,1.0%
+verify_ai_ref,Always verify (100%),60,61.9%
+verify_ai_ref,Only if reading full text,8,8.2%
+verify_ai_ref,Only if suspicious,1,1.0%
+verify_ai_ref,Trust AI,0,0.0%
+verify_ai_ref,"Yes, I verify 100% of them via Google Scholar/DBLP",4,4.1%
+verify_ai_ref,I only verify if I need to read the full text,1,1.0%
+verify_ai_ref,Occasionally (<20%),2,2.1%
+verify_ai_ref,I do not use General LLMs for finding references,6,6.2%
+cite_without_reading,"Yes, often",6,6.2%
+cite_without_reading,"Yes, once or twice",10,10.3%
+cite_without_reading,"No, never",58,59.8%
+cite_without_reading,"Yes, I verify 100% of them via Google Scholar/DBLP",7,7.2%
+cite_without_reading,I only verify if I need to read the full text,1,1.0%
+agree_ai_easier_harder,Strongly agree,23,23.7%
+agree_ai_easier_harder,Somewhat agree,26,26.8%
+agree_ai_easier_harder,Neutral,11,11.3%
+agree_ai_easier_harder,Somewhat disagree,11,11.3%
+agree_ai_easier_harder,Strongly disagree,3,3.1%
+agree_ai_easier_harder,"No, never",8,8.2%
+broken_doi_strategy,Try to find manually,41,42.3%
+broken_doi_strategy,"Assume hallucination, discard",23,23.7%
+broken_doi_strategy,Ask AI for another link,4,4.1%
+broken_doi_strategy,"Keep citation, remove DOI",1,1.0%
+broken_doi_strategy,I ask the AI to provide a different link,1,1.0%
+broken_doi_strategy,I assume the paper exists and try to find it manually,4,4.1%
+broken_doi_strategy,Strongly agree,3,3.1%
+broken_doi_strategy,Somewhat agree,3,3.1%
+broken_doi_strategy,Somewhat disagree,1,1.0%
+broken_doi_strategy,Neutral,1,1.0%
+metadata_source,Direct export from publisher,23,23.7%
+metadata_source,"Google Scholar ""Cite"" button",62,63.9%
+metadata_source,Copy from other papers,4,4.1%
+metadata_source,AI-generated,0,0.0%
+metadata_source,I assume the paper exists and try to find it manually,6,6.2%
+metadata_source,I keep the citation but remove the DOI,1,1.0%
+metadata_source,I assume the paper is a hallucination and discard it immediately,1,1.0%
+verify_claim_freq,Every single time,52,53.6%
+verify_claim_freq,Most of the time,22,22.7%
+verify_claim_freq,Only for critical claims,13,13.4%
+verify_claim_freq,Rarely,2,2.1%
+verify_claim_freq,Direct export from publisher (IEEE/ACM),4,4.1%
+verify_claim_freq,"Google Scholar ""Cite"" button",4,4.1%
+cite_without_fulltext,"Yes, often",3,3.1%
+cite_without_fulltext,"Yes, if necessary",35,36.1%
+cite_without_fulltext,"No, never",51,52.6%
+cite_without_fulltext,Only for critical claims,1,1.0%
+cite_without_fulltext,Most of the time,2,2.1%
+cite_without_fulltext,Every single time,5,5.2%
+pressure_many_refs,Strongly agree,6,6.2%
+pressure_many_refs,Somewhat agree,31,32.0%
+pressure_many_refs,Neutral,24,24.7%
+pressure_many_refs,Somewhat disagree,16,16.5%
+pressure_many_refs,Strongly disagree,12,12.4%
+pressure_many_refs,"Yes, if necessary",4,4.1%
+pressure_many_refs,"No, never",4,4.1%
+reviewer_check_refs,"Yes, carefully",5,5.2%
+reviewer_check_refs,"Yes, skimming",14,14.4%
+reviewer_check_refs,No,3,3.1%
+reviewer_check_refs,Somewhat agree,3,3.1%
+reviewer_check_refs,Neutral,2,2.1%
+reviewer_check_refs,Strongly disagree,2,2.1%
+reviewer_check_refs,Somewhat disagree,1,1.0%
+what_reviewers_check,Self-citation abuse,3,3.1%
+what_reviewers_check,Missing key related work,20,20.6%
+what_reviewers_check,Correctness of metadata,8,8.2%
+what_reviewers_check,Existence of papers,6,6.2%
+what_reviewers_check,"Yes, carefully",2,2.1%
+what_reviewers_check,No,2,2.1%
+what_reviewers_check,"Yes, skimming",4,4.1%
+click_doi_verify,Frequently,0,0.0%
+click_doi_verify,Occasionally,9,9.3%
+click_doi_verify,Rarely,7,7.2%
+click_doi_verify,Never,6,6.2%
+click_doi_verify,Missing key related work,8,8.2%
+click_doi_verify,"Correctness of metadata (Year, Venue)",2,2.1%
+click_doi_verify,Self-citation abuse,2,2.1%
+click_doi_verify,Existence of the papers,4,4.1%
+suspected_fake,Yes,4,4.1%
+suspected_fake,No,18,18.6%
+suspected_fake,Occasionally,4,4.1%
+suspected_fake,Rarely,2,2.1%
+suspected_fake,Frequently,2,2.1%
+verify_preprint,Always,4,4.1%
+verify_preprint,Sometimes,11,11.3%
+verify_preprint,No,13,13.4%
+verify_preprint,Yes,2,2.1%
+handle_non_english,Check with translation tools,7,7.2%
+handle_non_english,Ignore them,10,10.3%
+handle_non_english,Ask authors to clarify,1,1.0%
+handle_non_english,Assume they are valid,6,6.2%
+handle_non_english,Sometimes,4,4.1%
+handle_non_english,Always,2,2.1%
+agree_bib_accuracy,Strongly agree,44,45.4%
+agree_bib_accuracy,Somewhat agree,22,22.7%
+agree_bib_accuracy,Neutral,10,10.3%
+agree_bib_accuracy,Somewhat disagree,3,3.1%
+agree_bib_accuracy,Strongly disagree,0,0.0%
+agree_bib_accuracy,I check them using translation tools,3,3.1%
+agree_bib_accuracy,I assume they are valid,3,3.1%
+agree_bib_accuracy,I ignore them,2,2.1%
+peer_review_effective,Very effective,1,1.0%
+peer_review_effective,Somewhat effective,19,19.6%
+peer_review_effective,Not very effective,53,54.6%
+peer_review_effective,Ineffective,6,6.2%
+peer_review_effective,Strongly agree,8,8.2%
+peer_review_effective,Somewhat agree,8,8.2%
+peer_review_effective,Somewhat disagree,1,1.0%
+peer_review_effective,Neutral,1,1.0%
+severity,Critical crisis,34,35.1%
+severity,Major problem,24,24.7%
+severity,Minor nuisance,20,20.6%
+severity,Not a problem,1,1.0%
+severity,Not very effective,11,11.3%
+severity,Ineffective,3,3.1%
+severity,Somewhat effective,4,4.1%
+responsibility,Authors,71,73.2%
+responsibility,Reviewers,3,3.1%
+responsibility,Publishers,3,3.1%
+responsibility,AI tool developers,2,2.1%
+responsibility,Critical crisis,8,8.2%
+responsibility,Major problem,7,7.2%
+responsibility,Minor nuisance,3,3.1%
+automated_tools,"Yes, absolutely",50,51.5%
+automated_tools,Maybe,24,24.7%
+automated_tools,No,5,5.2%
+automated_tools,Authors,16,16.5%
+automated_tools,Publishers (Editorial check),1,1.0%
+automated_tools,Reviewers,1,1.0%
+agree_cite_ai_summary,Strongly agree,2,2.1%
+agree_cite_ai_summary,Somewhat agree,9,9.3%
+agree_cite_ai_summary,Neutral,17,17.5%
+agree_cite_ai_summary,Somewhat disagree,27,27.8%
+agree_cite_ai_summary,Strongly disagree,24,24.7%
+agree_cite_ai_summary,"Yes, absolutely",16,16.5%
+agree_cite_ai_summary,Maybe,2,2.1%
+seen_scrambled_authors,Yes,37,38.1%
+seen_scrambled_authors,No,60,61.9%
+seen_wrong_venue_year,Yes,42,43.3%
+seen_wrong_venue_year,No,55,56.7%
+accept_tech_report,Yes,72,74.2%
+accept_tech_report,No,25,25.8%
+reaction_one_error,Reject the paper,4,4.1%
+reaction_one_error,Ask for major revision,12,12.4%
+reaction_one_error,Mention in minor comments,68,70.1%
+reaction_one_error,Ignore,0,0.0%
+reaction_one_error,Yes,13,13.4%
+reaction_multiple_errors,Reject immediately (Ethical concern),45,46.4%
+reaction_multiple_errors,Ask for explanation,34,35.1%
+reaction_multiple_errors,Consider innocent mistake,0,0.0%
+reaction_multiple_errors,Reject the paper,1,1.0%
+reaction_multiple_errors,Mention it in minor comments,14,14.4%
+reaction_multiple_errors,Ask for major revision,3,3.1%
+report_fake_ref,"Yes, I would contact the authors directly",24,24.7%
+report_fake_ref,"Yes, I would contact the PC Chairs or Journal Editors",30,30.9%
+report_fake_ref,"No, I would verify it privately but take no action",34,35.1%
+report_fake_ref,"No, I would ignore it",6,6.2%
+report_fake_ref,Reject immediately (Ethical concern),12,12.4%
+report_fake_ref,Ask for explanation,6,6.2%
+copypaste_bibtex,"Yes, often",12,12.4%
+copypaste_bibtex,"Yes, rarely",23,23.7%
+copypaste_bibtex,"No, never",44,45.4%
+copypaste_bibtex,Strongly disagree,9,9.3%
+copypaste_bibtex,Somewhat disagree,4,4.1%
+copypaste_bibtex,Somewhat agree,3,3.1%
+copypaste_bibtex,Neutral,2,2.1%
+verify_all_bibtex_fields,Strongly agree,23,23.7%
+verify_all_bibtex_fields,Somewhat agree,24,24.7%
+verify_all_bibtex_fields,Neutral,23,23.7%
+verify_all_bibtex_fields,Somewhat disagree,6,6.2%
+verify_all_bibtex_fields,Strongly disagree,3,3.1%
+verify_all_bibtex_fields,"Yes, I would contact the PC Chairs or Journal Editors",8,8.2%
+verify_all_bibtex_fields,"No, I would verify it privately but take no action",7,7.2%
+verify_all_bibtex_fields,"Yes, I would contact the authors directly",3,3.1%
+verify_all_bibtex_fields,"No, I would ignore it",2,2.1%
+use_semantic_scholar,Yes,18,18.6%
+use_semantic_scholar,No,61,62.9%
+use_semantic_scholar,Strongly agree,6,6.2%
+use_semantic_scholar,Somewhat disagree,4,4.1%
+use_semantic_scholar,Somewhat agree,3,3.1%
+use_semantic_scholar,Neutral,3,3.1%
+use_semantic_scholar,Strongly disagree,2,2.1%

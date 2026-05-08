@@ -1,0 +1,41 @@
+topic,most_cited_title,citation_count,total_valid_in_topic,percentage
+AI,Language Models are Few-Shot Learners,154,3595,0.04283727399165508
+AR,Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks,184,3313,0.05553878659824932
+CC,Computational Complexity: A Modern Approach,230,5649,0.04071517082669499
+CE,A continuum multi-species biofilm model with a novel interaction scheme,103,3266,0.031537048377219844
+CG,Computational Geometry: Algorithms and Applications,178,4252,0.04186265286923801
+CL,Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks,348,5575,0.06242152466367713
+CR,A Method for Obtaining Digital Signatures and Public-Key Cryptosystems,91,3482,0.02613440551407237
+CV,U-Net: Convolutional Networks for Biomedical Image Segmentation,262,5425,0.048294930875576035
+CY,Algorithms of Oppression: How Search Engines Reinforce Racism,114,3201,0.03561387066541706
+DB,MapReduce: Simplified Data Processing on Large Clusters,71,3412,0.020808909730363423
+DC,MapReduce: Simplified Data Processing on Large Clusters,202,4522,0.04467049977885891
+DL,Digital Libraries,96,1730,0.055491329479768786
+DM,Polyphase codes with good periodic correlation properties,107,4282,0.02498832321345166
+DS,Introduction to Algorithms,202,5901,0.034231486188781565
+ET,FCT O-RAN: Design and Deployment of a Multi-Vendor End-to-End Private 5G Testbed,148,2600,0.05692307692307692
+FL,"Introduction to Automata Theory, Languages, and Computation",171,4169,0.04101703046294075
+GL,Denoising Diffusion Probabilistic Models,234,5732,0.04082344731332868
+GR,NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis,352,5449,0.06459900899247568
+GT,Algorithmic Game Theory,146,3158,0.04623179227359088
+HC,AttenTrack: Mobile User Attention Awareness Based on Context and External Distractions,130,3306,0.03932244404113733
+IR,BERT4Rec: Sequential Recommendation with Bidirectional Encoder Representations from Transformer,110,4146,0.02653159671972986
+IT,A Mathematical Theory of Communication,260,4760,0.0546218487394958
+LG,"Causality: Models, Reasoning, and Inference",140,4802,0.029154518950437316
+LO,Language-Based Information-Flow Security,145,4785,0.030303030303030304
+MA,"Multiagent Systems: Algorithmic, Game-Theoretic, and Logical Foundations",152,3905,0.038924455825864276
+MM,LLM-Guided Semantic Relational Reasoning for Multimodal Intent Recognition,134,3496,0.03832951945080092
+MS,Robust Regression and Outlier Detection,180,5543,0.032473389861086055
+NA,Numerical Linear Algebra,121,4735,0.025554382259767687
+NE,Handbook of Evolutionary Computation,114,4713,0.0241884150222788
+NI,Green Traffic Engineering for Satellite Networks Using Segment Routing Flexible Algorithm,138,2312,0.05968858131487889
+OH,Cutting the Electric Bill for Internet-Scale Systems,71,2123,0.03344324069712671
+OS,Scheduling Algorithms for Multiprogramming in a Hard-Real-Time Environment,153,4355,0.03513203214695752
+PF,Optimal Parallel Scheduling under Concave Speedup Functions,122,3758,0.032464076636508785
+PL,Dato: A Task-Based Programming Model for Dataflow Accelerators,168,4417,0.03803486529318542
+RO,Human-Robot Interaction: A Survey,96,3931,0.02442126685321801
+SC,Planning Algorithms,110,4482,0.024542614904060688
+SD,Musical genre classification of audio signals,185,4332,0.04270544783010157
+SE,Automated Generation of Issue-Reproducing Tests by Combining LLMs and Search-Based Testing,141,3402,0.04144620811287478
+SI,Semi-Supervised Classification with Graph Convolutional Networks,287,5877,0.04883443933979922
+SY,Three-Phase PLLs: A Review of Recent Advances,81,3040,0.026644736842105263

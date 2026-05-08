@@ -1,7 +1,8 @@
 \section{Experiment Design}
 \label{subsec:experiment_design}
 
-To measure the prevalence of ghost citations and understand their origins across the research ecosystem, we conduct three complementary experiments: an LLM Benchmark to quantify ghost-citation generation by state-of-the-art LLMs; an Archival Analysis to measure real-world prevalence; and a User Study to understand the human factors that allow ghost citations to persist. Below, we describe each in detail.
+In this section, we describe the design of our three complementary experiments to analyze ghost citations in the LLM era. Each experiment targets a specific research question: the LLM Benchmark quantifies how often LLMs hallucinate citations and what factors affect their accuracy; the Archival Analysis measures the real-world prevalence of invalid citations in published papers; and the User Study investigates researchers' practices and attitudes toward citation verification. 
+Below, we detail the setup, conditions, and rationale for each experiment.
 
 \subsection{Experiment I: LLM Benchmark}
 \label{subsec:experiment_i}
@@ -17,16 +18,17 @@ In this experiment, we systematically evaluate 13 state-of-the-art LLMs spanning
 All models were accessed via a third-party API aggregation platform (OpenRouter)~\cite{openrouter} for consistent interfaces.
 We constructed a taxonomy of 40 computer science research domains based on arXiv CS subject classes~\cite{arxivCSClasses} (full list in the \cref{app:domain_codes}).
 For each model-domain combination we use a standardized prompt to generate citations within that domain; the prompt asks the model to produce a fixed number of domain-specific references in a strict JSON schema (author, title, venue, year, type), enabling consistent parsing and verification (the full prompt is provided in \cref{app:llm_citation_prompt}).
+
 \noindent\textbf{Conditions and verification.}
 We varied two factors: batch size (10, 20, or 30 citations per prompt) and whether to enable online search with chain-of-thought prompting.
 For each model-domain-batch-search combination, we generate 120 citations ($30\times4$ interactions, $20\times6$ interactions, or $10\times12$ interactions).
 In total, we obtained 375,440 citations from 22,800 API interactions, with total API costs amounting to $\approx 800$ USD.
 All generated citations were verified with \citeb and classified as VALID or INVALID. Unparseable outputs were flagged as format errors and only included in format compliance statistics, not hallucination rates.
 
-\noindent\textbf{\added{Limitations of experimental setup.}} \added{We acknowledge that our benchmark design, which prompts models to generate fixed-size blocks of domain-specific citations, does not fully mirror real-world researcher workflows, where citations are typically produced in the context of drafting specific arguments rather than via bulk generation requests. This design choice prioritizes internal validity (ensuring fair cross-model comparison under identical conditions) over external validity (generalizability to naturalistic use). Accordingly, our hallucination rates should be interpreted as a controlled baseline rather than an estimate of real-world prevalence, and we discuss this limitation further in Section~\ref{sec:discussion}.}
+\noindent\textbf{Design rationale.} Our benchmark prompts models to generate fixed-size blocks of domain-specific citations. This approach ensures fair cross-model comparison under identical conditions, though it may differ from real-world use where citations are produced while drafting specific arguments. Accordingly, our hallucination rates should be interpreted as a controlled baseline rather than an estimate of real-world prevalence; we discuss interpretation further in Section~\ref{sec:discussion}.
 
 %  \xl{一次验证100个，还是每次验证1个验证100次，需要写一下}
-\noindent\textbf{Auxiliary Experiment: Citation Validity Judgment.}
+\noindent\textbf{LLMs as Citation Validators.}
 To assess whether LLMs can reliably evaluate citation validity, we conducted an auxiliary experiment where each model was prompted to verify 100 bibliographic entries with known ground truth (50 valid, 50 invalid) from our archival analysis (\cref{sec:archival_results}), one entry per prompt, and classify each as VALID or INVALID. The prompt is provided in Appendix~\ref{app:llm_judge_prompt}.
 
 \subsection{Experiment II: Archival Analysis}
@@ -42,24 +44,22 @@ We collected all accepted papers (main, workshop, short, poster) in PDF from off
 To ensure the accuracy of our analysis and to avoid false positives (where valid citations are misclassified as invalid), we employ a rigorous three-stage process:
 \begin{itemize}
     \item \textit{Step 1: Automated Examination.}
-    All 56,381 papers were processed through \citeb, extracting citations, and flagging potentially problematic citations as invalid, meaning their title falls below the similarity threshold $\theta = 0.9$.
+    All 56,381 papers were processed through \citeb, extracting citations, and flagging citations with similarity scores below $\theta = 0.9$ as potentially invalid for manual review. 
    \item \textit{Step 2: Manual Verification.} Sixteen trained research assistants manually reviewed all flagged citations over approximately one month. Each citation was independently checked at least twice before being classified into one of three categories: \textit{Non-Academic Source} (websites, blogs, repositories), \textit{Valid} (verified through extensive manual search), or \textit{Invalid} (incorrect metadata or untraceable).
 
     \item \textit{Step 3: False Negative Estimation.}
-    We sampled 400 citations from the ``valid'' pool for manual review.
-    \added{This sample size was determined using standard sample-size estimation for proportions: with an expected false-negative rate near zero, a 95\% confidence level, and a 5\% margin of error, approximately 384 samples are required; we rounded up to 400 to ensure robustness~
-ocite{cochran1977sampling}.}
-    No additional invalid citations were found, suggesting high recall.
+    To ensure accuracy, we sampled 400 citations from the ``valid'' pool for manual review (95\% confidence, 5\% margin of error).
+    No additional invalid citations were found.
 \end{itemize}
 
-Two expert researchers subsequently reviewed all manually classified invalid citations to ensure accuracy, and further subdivided them into two subcategories: \textit{error citation} and \textit{ghost citation} (untraceable citations cannot be found even with extensive manual search).
-Some untraceable citations appear clearly fabricated (e.g., titles stitched together from high-probability phrases); others simply do not exist in standard bibliographic indexes, and both align with the definition of ``ghost citations'' in our study.
+Two researchers subsequently reviewed all manually classified invalid citations to ensure accuracy, and further subdivided them into two subcategories: \textit{error citation} and \textit{ghost citation} (untraceable citations cannot be found with extensive manual search).
+Some untraceable citations appear clearly fabricated (e.g., titles stitched together from high-probability phrases); others simply do not exist in standard bibliographic indexes, both align with the definition of ``ghost citations'' in our study.
 
 \subsection{Experiment III: User Study}
 \label{subsec:experiment_iii}
 
-To understand the human factors enabling ghost citations to reach publication, we conducted a survey of active researchers across career stages and research areas, recruiting participants via social media and targeted emails to 300 randomly sampled authors and PC members from the above 8 venues; email addresses were manually collected from public sources. 
+To understand the human factors enabling ghost citations to reach publication, we conducted a survey of active researchers across career stages and research areas, recruiting participants via public accsessable social media and targeted emails to 300 randomly sampled authors and PC members from the above 8 venues;  
 The survey covered four dimensions: AI adoption, citation practices, author-level verification behavior, and reviewer-level verification behavior, and included paired reverse-worded questions to flag inconsistent responses as a data-quality check (the full survey is provided in \cref{app:survey_details_full}).
 Following IRB approval, the online survey provided full study details and opt-out options; it took 10--15 minutes, was voluntary and anonymized, and obtained informed consent without collecting personally identifiable information. Responses were stored and analyzed in de-identified form with access control.
 
-\noindent\textbf{\added{Data analysis.}} \added{Quantitative responses were analyzed using descriptive statistics (frequencies and percentages). For the open-ended comment question (Q59), two researchers independently performed thematic coding to identify recurring themes; disagreements were resolved through discussion. To ensure response consistency, we included paired reverse-worded items (Q38 and Q39): respondents who simultaneously endorsed risky behavior (``often copy-paste without checking'') and diligent behavior (``meticulously verify every field'') were flagged as inconsistent and excluded ($3/97$), yielding $N=94$ valid responses for analysis.}
+\noindent\textbf{Data analysis.} Quantitative responses were analyzed using descriptive statistics (frequencies and percentages). To ensure response consistency, we included paired reverse-worded items (Q38 and Q39): respondents who simultaneously endorsed risky behavior (``often copy-paste without checking'') and diligent behavior (``meticulously verify every field'') were flagged as inconsistent and excluded ($3/97$), yielding $N=94$ valid responses for analysis.

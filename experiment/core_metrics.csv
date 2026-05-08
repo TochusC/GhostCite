@@ -1,0 +1,182 @@
+﻿Module,Category,Metric,Value,Unit,Note
+LLM Benchmark,Overall,Total Interactions,22800,count,
+LLM Benchmark,Overall,Well-formed Interaction Rate,90.58,%,
+LLM Benchmark,Overall,Total Citations Generated,375440,count,
+LLM Benchmark,Overall,Well-formed Citation Rate,88.38,%,
+LLM Benchmark,Overall,Overall Hallucination Rate,50.29,%,Across all models and domains
+LLM Benchmark,Overall,Valid Citations,164933,count,
+LLM Benchmark,Overall,Invalid (Hallucinated) Citations,166876,count,
+LLM Benchmark,Model Performance,DeepSeek - Hallucination Rate,14.23,%,
+LLM Benchmark,Model Performance,GLM-4.5 - Hallucination Rate,21.25,%,
+LLM Benchmark,Model Performance,Claude 4 - Hallucination Rate,21.84,%,
+LLM Benchmark,Model Performance,Qwen-3 - Hallucination Rate,23.52,%,
+LLM Benchmark,Model Performance,Kimi - Hallucination Rate,41.86,%,
+LLM Benchmark,Model Performance,Llama 4 - Hallucination Rate,45.84,%,
+LLM Benchmark,Model Performance,GPT-5 - Hallucination Rate,50.92,%,
+LLM Benchmark,Model Performance,Gemini - Hallucination Rate,59.47,%,
+LLM Benchmark,Model Performance,ERNIE - Hallucination Rate,71.9,%,
+LLM Benchmark,Model Performance,Seed - Hallucination Rate,78.64,%,
+LLM Benchmark,Model Performance,Grok 4 - Hallucination Rate,79.98,%,
+LLM Benchmark,Model Performance,Phi-4 - Hallucination Rate,87.47,%,
+LLM Benchmark,Model Performance,Hunyuan - Hallucination Rate,94.93,%,
+LLM Benchmark,Model Performance,Best Model,DeepSeek,,Lowest hallucination rate
+LLM Benchmark,Model Performance,Worst Model,Hunyuan,,Highest hallucination rate
+LLM Benchmark,Model Performance,Rate Range,14.23–94.93,%,
+LLM Benchmark,Online Search Impact,Avg Offline+NoThinking Rate,52.65,%,
+LLM Benchmark,Online Search Impact,Avg Online+Thinking Rate,54.78,%,
+LLM Benchmark,Online Search Impact,Average Improvement,2.13,%,
+LLM Benchmark,Online Search Impact,Models Improved by Online Search,6,count,
+LLM Benchmark,Online Search Impact,Models Degraded by Online Search,7,count,
+LLM Benchmark,Domain Sensitivity,DL - Hallucination Rate,80.19,%,
+LLM Benchmark,Domain Sensitivity,OH - Hallucination Rate,75.38,%,
+LLM Benchmark,Domain Sensitivity,NI - Hallucination Rate,73.42,%,
+LLM Benchmark,Domain Sensitivity,ET - Hallucination Rate,69.38,%,
+LLM Benchmark,Domain Sensitivity,GT - Hallucination Rate,64.04,%,
+LLM Benchmark,Domain Sensitivity,SY - Hallucination Rate,63.90,%,
+LLM Benchmark,Domain Sensitivity,CY - Hallucination Rate,62.24,%,
+LLM Benchmark,Domain Sensitivity,AR - Hallucination Rate,60.59,%,
+LLM Benchmark,Domain Sensitivity,CE - Hallucination Rate,60.58,%,
+LLM Benchmark,Domain Sensitivity,DB - Hallucination Rate,60.31,%,
+LLM Benchmark,Domain Sensitivity,SE - Hallucination Rate,60.26,%,
+LLM Benchmark,Domain Sensitivity,CR - Hallucination Rate,59.96,%,
+LLM Benchmark,Domain Sensitivity,HC - Hallucination Rate,59.51,%,
+LLM Benchmark,Domain Sensitivity,MM - Hallucination Rate,59.20,%,
+LLM Benchmark,Domain Sensitivity,AI - Hallucination Rate,57.32,%,
+LLM Benchmark,Domain Sensitivity,PF - Hallucination Rate,54.63,%,
+LLM Benchmark,Domain Sensitivity,MA - Hallucination Rate,53.97,%,
+LLM Benchmark,Domain Sensitivity,RO - Hallucination Rate,52.21,%,
+LLM Benchmark,Domain Sensitivity,IR - Hallucination Rate,51.05,%,
+LLM Benchmark,Domain Sensitivity,CG - Hallucination Rate,49.66,%,
+LLM Benchmark,Domain Sensitivity,FL - Hallucination Rate,49.60,%,
+LLM Benchmark,Domain Sensitivity,DM - Hallucination Rate,49.33,%,
+LLM Benchmark,Domain Sensitivity,PL - Hallucination Rate,48.40,%,
+LLM Benchmark,Domain Sensitivity,OS - Hallucination Rate,47.96,%,
+LLM Benchmark,Domain Sensitivity,SC - Hallucination Rate,47.23,%,
+LLM Benchmark,Domain Sensitivity,NE - Hallucination Rate,45.58,%,
+LLM Benchmark,Domain Sensitivity,SD - Hallucination Rate,45.51,%,
+LLM Benchmark,Domain Sensitivity,NA - Hallucination Rate,44.01,%,
+LLM Benchmark,Domain Sensitivity,DC - Hallucination Rate,43.96,%,
+LLM Benchmark,Domain Sensitivity,IT - Hallucination Rate,43.18,%,
+LLM Benchmark,Domain Sensitivity,LG - Hallucination Rate,41.92,%,
+LLM Benchmark,Domain Sensitivity,LO - Hallucination Rate,41.55,%,
+LLM Benchmark,Domain Sensitivity,MS - Hallucination Rate,35.03,%,
+LLM Benchmark,Domain Sensitivity,CV - Hallucination Rate,33.64,%,
+LLM Benchmark,Domain Sensitivity,GR - Hallucination Rate,32.50,%,
+LLM Benchmark,Domain Sensitivity,CC - Hallucination Rate,32.23,%,
+LLM Benchmark,Domain Sensitivity,GL - Hallucination Rate,31.50,%,
+LLM Benchmark,Domain Sensitivity,DS - Hallucination Rate,29.76,%,
+LLM Benchmark,Domain Sensitivity,SI - Hallucination Rate,29.31,%,
+LLM Benchmark,Domain Sensitivity,CL - Hallucination Rate,28.80,%,
+LLM Benchmark,Domain Sensitivity,Highest Hallucination Domain,DL,,80.19%
+LLM Benchmark,Domain Sensitivity,Lowest Hallucination Domain,CL,,28.80%
+LLM Benchmark,Domain Sensitivity,Average Domain Hallucination Rate,50.72,%,
+LLM Benchmark,Domain Sensitivity,Std Dev Across Domains,13.26,%,
+LLM Benchmark,Scaling Effect,Avg Rate (10 References),53.25,%,
+LLM Benchmark,Scaling Effect,Avg Rate (20 References),53.05,%,
+LLM Benchmark,Scaling Effect,Avg Rate (30 References),53.72,%,
+LLM Benchmark,Scaling Effect,Most Stable Model,Gemini,,Smallest range across batch sizes
+LLM Benchmark,Scaling Effect,Least Stable Model,GPT-5,,Largest range across batch sizes
+LLM Benchmark,Stability,Most Consistent Hallucinator,DeepSeek,,Mean stability 0.226
+LLM Benchmark,Stability,Least Consistent Hallucinator,Phi-4,,Mean stability 0.007
+LLM Benchmark,Stability,Avg Hallucination Stability,0.09,score,
+LLM Benchmark,Stability,Most Consistent Valid Citer,DeepSeek,,Mean stability 0.577
+LLM Benchmark,Stability,Least Consistent Valid Citer,Phi-4,,Mean stability 0.191
+LLM Benchmark,Stability,Avg Valid Citation Stability,0.43,score,
+LLM Benchmark,Temporal,Peak Year (Most Citations),2020,,26015 citations
+LLM Benchmark,Temporal,Highest Hallucination Year,2025,,98.75%
+LLM Benchmark,Temporal,Lowest Hallucination Year,2009,,27.48%
+LLM Benchmark,Temporal,Average Temporal Hallucination Rate,48.24,%,
+Paper Audit,Overall,Total Invalid Citation Records,739,count,
+Paper Audit,Overall,Unique Papers with Invalid Citations,596,count,
+Paper Audit,Overall,Conferences Analyzed,8,count,
+Paper Audit,Overall,Years Covered,2020–2025,range,
+Paper Audit,Overall,Total Papers Analyzed,56381,count,
+Paper Audit,Overall,Total Citations Analyzed,~2.2M,count,Approx 2.2 million
+Paper Audit,Overall,Papers with Invalid Citations Rate,1.07,%,596 / 56381
+Paper Audit,Domain Distribution,AI Invalid Citations,675,count,
+Paper Audit,Domain Distribution,Security Invalid Citations,64,count,
+Paper Audit,By Conference,AAAI - Invalid Papers,86,count,0.62% of 13821
+Paper Audit,By Conference,AAAI - Rate,0.62,%,
+Paper Audit,By Conference,CCS - Invalid Papers,20,count,1.14% of 1756
+Paper Audit,By Conference,CCS - Rate,1.14,%,
+Paper Audit,By Conference,ICML - Invalid Papers,104,count,0.93% of 11192
+Paper Audit,By Conference,ICML - Rate,0.93,%,
+Paper Audit,By Conference,IJCAI - Invalid Papers,51,count,0.92% of 5535
+Paper Audit,By Conference,IJCAI - Rate,0.92,%,
+Paper Audit,By Conference,NDSS - Invalid Papers,18,count,2.56% of 702
+Paper Audit,By Conference,NDSS - Rate,2.56,%,
+Paper Audit,By Conference,NeurIPS - Invalid Papers,308,count,1.51% of 20387
+Paper Audit,By Conference,NeurIPS - Rate,1.51,%,
+Paper Audit,By Conference,S&P - Invalid Papers,6,count,0.56% of 1073
+Paper Audit,By Conference,S&P - Rate,0.56,%,
+Paper Audit,By Conference,USENIX - Invalid Papers,11,count,0.57% of 1915
+Paper Audit,By Conference,USENIX - Rate,0.57,%,
+Paper Audit,By Conference,Highest Rate Conference,NDSS,,2.56%
+Paper Audit,By Conference,Most Invalid Papers (Count),NeurIPS,,308 papers
+Paper Audit,Temporal Trend,2020 - Invalid Papers,52,count,0.85% of 6118
+Paper Audit,Temporal Trend,2020 - Rate,0.85,%,
+Paper Audit,Temporal Trend,2021 - Invalid Papers,52,count,0.76% of 6862
+Paper Audit,Temporal Trend,2021 - Rate,0.76,%,
+Paper Audit,Temporal Trend,2022 - Invalid Papers,70,count,0.96% of 7325
+Paper Audit,Temporal Trend,2022 - Rate,0.96,%,
+Paper Audit,Temporal Trend,2023 - Invalid Papers,81,count,0.88% of 9233
+Paper Audit,Temporal Trend,2023 - Rate,0.88,%,
+Paper Audit,Temporal Trend,2024 - Invalid Papers,120,count,0.98% of 12236
+Paper Audit,Temporal Trend,2024 - Rate,0.98,%,
+Paper Audit,Temporal Trend,2025 - Invalid Papers,235,count,1.61% of 14607
+Paper Audit,Temporal Trend,2025 - Rate,1.61,%,
+Paper Audit,Temporal Trend,Pre-GenAI Average (2020-2022),0.85,%,
+Paper Audit,Temporal Trend,Post-GenAI Average (2023-2025),1.16,%,
+Paper Audit,Temporal Trend,Rate Increase (Post vs Pre),35.2,%,Relative increase
+Paper Audit,Temporal Trend,2025 Surge vs 2024,80.9,%,Relative increase from 0.98% to 1.61%
+Paper Audit,Distribution,Papers with Exactly 1 Invalid Citation,542,count,88.7% of invalid papers
+Paper Audit,Distribution,Papers with 2+ Invalid Citations,69,count,11.3% of invalid papers
+Paper Audit,Distribution,Most Repeated Invalid Citation,Augmix,,16 papers across AAAI/IJCAI/NeurIPS
+Survey,Demographics,Total Respondents,97,count,"Chinese=79, English=18"
+Survey,Demographics,PhD Students,34.0,%,
+Survey,Demographics,Faculty,17.5,%,
+Survey,Demographics,Top-tier Reviewers,33.0,%,
+Survey,Demographics,AI & ML Research Area,20.6,%,
+Survey,Demographics,Network Security Research Area,19.6,%,
+Survey,AI Adoption,Use AI for Research,76.3,%,
+Survey,AI Adoption,Use General-purpose LLMs,100,%,Of AI users
+Survey,AI Adoption,Use Coding Assistants,39.2,%,Of AI users
+Survey,Hallucination Experience,Encounter Hallucinations Often/Very Often,~41,%,Of those using LLMs for references
+Survey,Verification Behavior,Always/Usually Verify Externally,~78,%,Of AI citation users
+Survey,Verification Behavior,Always Verify (incl 100% GS/DBLP),66.0,%,
+Survey,Risky Behavior,Copy-pasted BibTeX Without Checking,~36,%,
+Survey,Risky Behavior,Cited AI-recommended Paper Without Reading,~24,%,
+Survey,Risky Behavior,Cite Based on Abstract/Title Only (if paywalled),45.57,%,Chinese survey n=79
+Survey,Perception,Major Problem or Critical Crisis,59.8,%,
+Survey,Perception,Critical Crisis,35.1,%,
+Survey,Perception,Authors Primarily Responsible,73.2,%,
+Survey,Perception,Support Automated Checking Tools,51.5,%,Strongly support
+Survey,Perception,Peer Review Ineffective at Catching Errors,67.09,%,Chinese survey
+Survey,Reviewer Behavior,Check References When Reviewing,19.6,%,Skimming+carefully
+Survey,Reviewer Behavior,Never Click DOI to Verify,6.2,%,
+Survey,Reviewer Behavior,Rarely Click DOI to Verify,7.2,%,
+Survey,Reviewer Behavior,Focus on Missing Related Work,20.6,%,
+Survey,Reviewer Behavior,Focus on Metadata Correctness,8.2,%,
+Survey,Reviewer Behavior,Focus on Existence of Papers,6.2,%,
+Survey,Reviewer Behavior,Reaction: One Incorrect Citation -> Minor Comment,70.1,%,
+Survey,Reviewer Behavior,Reaction: Multiple Fake -> Reject Immediately,46.4,%,
+LLM Judger,Judgement Accuracy,Claude 4 - Accuracy,0.27,ratio,"Valid correct=12/50, Invalid correct=15/50"
+LLM Judger,Judgement Accuracy,DeepSeek - Accuracy,0.35,ratio,"Valid correct=16/50, Invalid correct=19/50"
+LLM Judger,Judgement Accuracy,ERNIE - Accuracy,0.56,ratio,"Valid correct=6/50, Invalid correct=50/50"
+LLM Judger,Judgement Accuracy,Gemini - Accuracy,0.32,ratio,"Valid correct=20/50, Invalid correct=12/50"
+LLM Judger,Judgement Accuracy,GLM-4.5 - Accuracy,0.33,ratio,"Valid correct=19/50, Invalid correct=14/50"
+LLM Judger,Judgement Accuracy,GPT-5 - Accuracy,0.36,ratio,"Valid correct=8/50, Invalid correct=28/50"
+LLM Judger,Judgement Accuracy,Grok 4 - Accuracy,0.32,ratio,"Valid correct=14/50, Invalid correct=18/50"
+LLM Judger,Judgement Accuracy,Hunyuan - Accuracy,0.48,ratio,"Valid correct=19/50, Invalid correct=29/50"
+LLM Judger,Judgement Accuracy,Kimi - Accuracy,0.40,ratio,"Valid correct=14/50, Invalid correct=26/50"
+LLM Judger,Judgement Accuracy,Llama 4 - Accuracy,0.35,ratio,"Valid correct=19/50, Invalid correct=16/50"
+LLM Judger,Judgement Accuracy,Phi-4 - Accuracy,0.41,ratio,"Valid correct=12/50, Invalid correct=29/50"
+LLM Judger,Judgement Accuracy,Qwen-3 - Accuracy,0.34,ratio,"Valid correct=13/50, Invalid correct=21/50"
+LLM Judger,Judgement Accuracy,Seed - Accuracy,0.47,ratio,"Valid correct=31/50, Invalid correct=16/50"
+LLM Judger,Judgement Accuracy,Best Judger,Seed,,Accuracy 0.47
+LLM Judger,Judgement Accuracy,Worst Judger,GPT-5,,Accuracy 0.36
+Overall,Key Numbers,LLMs Tested,13,count,
+Overall,Key Numbers,Research Domains,40,count,
+Overall,Key Numbers,Paper Audit Venues,8,count,
+Overall,Key Numbers,Survey Respondents,97,count,
+Overall,Key Numbers,Core Tool,CiteVerifier,,Open-source citation verification framework

@@ -2,7 +2,7 @@
 \label{sec:discussion}
 
 
-Through our comprehensive study on citation validity, we show that ghost citations constitute a systemic threat to scholarly trust: fabricated references can enter and persist in the literature because existing verification practices are sparse and largely trust-based.
+Through our comprehensive study on citation validity, we show that ghost citations constitute a systemic threat to academic trust: fabricated references can enter and persist in the literature because existing verification practices are sparse and largely trust-based.
 Below, we characterize the lifecycle of this threat and propose targeted interventions.
 %-------------------------------------------------------------------------------
 \subsection{The Lifecycle of Ghost Citations}
@@ -12,24 +12,25 @@ Understanding this pipeline is essential for designing effective interventions a
 
 \noindent
 \textbf{Stage 1: Generation.}
-LLMs do not retrieve citations from verified databases; instead, they ``stitch'' together plausible combinations of real author names, terminology, and venues, producing ghost citations that are syntactically perfect yet factually non-existent.
+When researchers ask LLMs to suggest citations, they generate citations from their internal parameters, combining real author names, authentic venue titles, and domain-specific terminology into references that appear legitimate but do not exist. 
+These fabricated citations are structurally valid, complete with realistic titles, author lists, and publication years, but no corresponding paper was ever published. Researchers often cannot detect this fabrication by inspection alone, as the generated references look indistinguishable from genuine ones.
 
 \noindent
 \textbf{Stage 2: Adoption.}
-The high surface plausibility of ghost citations exploits researchers' cognitive offloading, where they trust automated outputs without verification, performing only superficial checks (e.g., confirming the title ``looks reasonable'') rather than rigorous validation.
+Researchers, facing time pressure or unfamiliarity with a subfield, copy these AI-generated citations directly into their manuscripts without verification. 
+They may perform only superficial checks, such as confirming the title ``looks reasonable'' or the author name is recognizable, rather than searching for the paper in an academic database or reading its abstract. This cognitive offloading leads users to accept AI outputs without question: because the model produces coherent, well-formatted text, users treat the citations as accurate without independent verification. In our user study, participants who used AI assistance inserted invalid citations at significantly higher rates than those who did not, demonstrating that the convenience of automated generation directly enables adoption of fabricated references.
 
 \noindent
 \textbf{Stage 3: Review Failure.}
-Reviewers lack the capacity and time to verify each citation; moreover, academic trust protocols assume authors cite in good faith, so reviewers rarely question whether cited works exist.
-This combination allows invalid citations to pass through review undetected.
+Peer reviewers, already burdened with evaluating methodology, novelty, and correctness, lack the time and tools to verify every citation in a manuscript. 
+Academic publishing operates on a presumption of good faith: reviewers assume authors have read and accurately cited the works they reference. Reviewers do not routinely verify citations by searching for them in academic databases, and submission systems do not flag potentially invalid references automatically. Consequently, ghost citations pass through the review process undetected, receiving the implicit endorsement of peer review without ever being validated.
 
 \noindent
 \textbf{Stage 4: Publication and Propagation.}
-Once published, ghost citations become permanent fixtures.
-Our discovery of ``repeated invalid citations'' (appearing in up to 16 papers) reveals that researchers copy citations from existing papers, compounding errors across the literature.
+Once a paper containing ghost citations is published, those references enter the permanent scientific record. They appear in bibliographic databases, are indexed by search engines, and become available for other researchers to discover and cite. Our analysis reveals ``repeated invalid citations,'' the same erroneous reference appearing in up to 16 distinct papers, demonstrating how invalid citations propagate through the literature as researchers may copy references from existing works. Each subsequent citation makes the error harder to spot: a ghost citation that has been cited multiple times appears more credible simply by virtue of its repeated appearance, creating a self-reinforcing cycle of contamination that is increasingly difficult to detect and correct.
 
 Together, these four stages form a self-reinforcing pipeline that creates \textit{an illusion of evidential support} while contaminating the citation graph with phantom nodes and invalid edges.
-Left unchecked, this contamination threatens to fundamentally undermine scholarly communication: as fabricated citations accumulate, the research community may be forced to shift from its foundational presumption of trust to one of systematic skepticism, imposing unsustainable verification burdens on every researcher.
+If this continues, the research community will face a choice: either maintain the current trust-based system and accept growing contamination, or shift to universal verification and impose heavy burdens on every researcher.
 \textit{We urgently call for coordinated action to disrupt this pipeline at multiple points} before the problem becomes intractable.
 
 %-------------------------------------------------------------------------------
@@ -38,41 +39,41 @@ Left unchecked, this contamination threatens to fundamentally undermine scholarl
 Based on our findings, we propose interventions targeting each stakeholder group.
 \textit{Addressing ghost citations requires coordinated action} across the entire publication ecosystem; no single stakeholder can solve this problem in isolation.
 Effective mitigation demands disrupting the pollution pipeline at multiple stages, from generation to publication.
-Below, we outline actionable recommendations for researchers, venue organizers, AI developers, and the research community.
 
 \noindent
 \textbf{For Researchers.}
-Verify every AI-generated output before adoption, whether citations, literature summaries, or draft text.
-Our data shows that even high-performing models fabricate, so we recommend retrieval-grounded tools over purely generative ones and heightened caution when AI output falls outside verifiable domains (e.g., recent citations, unfamiliar subfields).
-At minimum, check each cited title in a trusted index and treat missing DOIs or inconsistent metadata as red flags; avoid copy-pasting BibTeX entries without verification.
-\added{Moreover, we urge researchers not to cite any paper, whether suggested by an AI tool or found through traditional search, without having read at least its abstract or a direct summary from the source. Relying solely on AI-generated summaries or metadata risks propagating both fabricated citations and mischaracterized claims.}
+Research should treat every AI-generated output as unverified until checked, whether citations, literature summaries, or draft text.
+Our data shows that even high-performing models fabricate; therefore, we recommend retrieval-grounded tools over purely generative ones, with heightened caution when AI output falls outside verifiable domains (e.g. unfamiliar subfields).
+At minimum, researchers should check each cited title in a trusted index, treat missing DOIs or inconsistent metadata as red flags, and avoid copy-pasting BibTeX entries without verification.
+We further suggest that researchers not cite any paper without reading at least its abstract or a direct summary from the source. Relying solely on AI-generated summaries or metadata risks propagating both mischaracterized claims and fabricated citations.
 
 \noindent
 \textbf{For Conference and Journal Organizers.}
-Deploy automated citation verification in submission systems (our survey shows 70.2\% strong support), require authors to attest that citations have been verified, provide lightweight verification tools to reviewers, and establish clear policies on AI-assisted citation generation.
-Require structured reference metadata at submission (e.g., BibTeX) and provide reviewers with a compact citation-risk summary to enable targeted checks without increasing burden.
-\added{For security venues specifically, ghost citations pose unique risks: a fabricated reference in a threat-modeling paper can introduce phantom attack vectors, while an invalid citation in a vulnerability analysis can misattribute credit or obscure the true provenance of a defensive technique. We urge security conference organizers to treat automated citation verification as part of the broader integrity infrastructure, alongside artifact evaluation and reproducibility checks.}
+Organizers should integrate automated citation verification into submission pipelines; our survey shows 70.2\% strong support for such measures.
+We recommend requiring structured reference metadata at submission, providing reviewers with compact citation-risk summaries to focus verification effort, and asking authors to attest that citations have been verified.
+Clear policies on AI-assisted citation generation should be established alongside lightweight verification tools for reviewers.
 
 % \xl{提交论文的同时，提交bib格式的参考文献}
 % \xl{然后一个题外话，我们是否能为hotcrp开源网站开发一个检测的功能，因为是开源的，接入我们开发出来的检测API}
 
-
 \noindent
 \textbf{For AI Tool Developers.}
-Ground outputs in retrieval from verified sources when factual accuracy matters. Clearly distinguish retrieved from generated content and prompt users to verify before finalizing. Enforce structured outputs with evidence fields (DOI, URL, or database identifier), and surface "not found" signals instead of fabricating metadata.
+Developers should ground citation outputs in retrieval from verified sources rather than pure generation.
+We suggest clearly distinguishing retrieved from generated content, prompting users to verify before finalizing, and enforcing structured outputs with evidence fields (DOI, URL, or database identifier).
+When a source cannot be found, systems should surface a ``not found'' signal rather than fabricate metadata.
 
 \noindent
 \textbf{For the Research Community.}
-Develop shared verification infrastructure and norms for AI-assisted bibliography construction, invest in detection research, and conduct regular measurement studies to track trends.
-Build open validation APIs and benchmark datasets, and standardize reporting so policies and tools can evolve with evidence.
+The research community should develop shared verification infrastructure and norms for AI-assisted bibliography construction.
+We recommend investing in detection research, conducting regular measurement studies to track trends, and building open validation APIs and benchmark datasets.
+Standardized reporting will enable policies and tools to evolve with evidence; without such coordination, fragmented efforts risk leaving gaps that both hallucination and complacency can exploit.
 
 
 
 %-------------------------------------------------------------------------------
 \subsection{Limitations}
 
-We conducted the first comprehensive, multi-dimensional investigation of ghost citations in the LLM era, developing an automated verification framework and analyzing over 2.2 million citations alongside systematic LLM benchmarking and user surveys.
-While our work provides critical empirical evidence of this emerging threat, we acknowledge that our study may have several limitations:
+We acknowledge several limitations in our study that should be considered when interpreting our findings and recommendations.
 
 
 \noindent
@@ -85,13 +86,13 @@ Our pipeline verifies only title similarity, reflecting our goal of detecting \e
 This conservative approach may undercount hallucinations that closely resemble real papers, while some flagged citations may be legitimate but poorly indexed works; our manual verification addresses the latter, but false negatives remain a limitation. 
 \textit{The detected invalid citations are likely to be a conservative lower bound} on the true hallucination rate.
 To mitigate human bias in manual verification, each flagged citation was double-checked by independent reviewers to ensure accuracy.
-However is still possible that some internal or poorly indexed papers were misclassified as invalid citations.
+However, it is still possible that some internal or poorly indexed papers were misclassified as invalid citations.
 
 \noindent
-\textbf{\added{External Validity of LLM Benchmark.}}
-\added{Our LLM benchmark uses a standardized protocol (fixed-size citation blocks per domain) that ensures fair cross-model comparison but may not mirror real-world drafting workflows. Our hallucination rates should be interpreted as a controlled lower bound rather than direct real-world estimates.}
+\textbf{External Validity of LLM Benchmark.}
+Our benchmark prompts models to generate fixed-number citation per domain. This ensures fair cross-model comparison but differs from real-world use, where citations are produced while drafting arguments. Our hallucination rates are therefore a controlled baseline, and may not directly reflect real-world prevalence.
 
 \noindent
-\textbf{\added{Survey Response Biases.}}
-\added{Our survey relies on self-reported behavior, which is susceptible to social-desirability bias: respondents may over-report diligence and under-report risky practices~\cite{redmiles2017survey}. The gap between stated verification (86.7\%) and admitted copy-pasting (41.5\%) is suggestive of this bias. We interpret our findings as indicative of perceived norms rather than definitive behavior measurements.}
+\textbf{Survey Response Biases.}
+Our survey relies on self-reported behavior, which is susceptible to social-desirability bias: respondents may over-report diligence and under-report risky practices~\cite{redmiles2017survey}. High self-reported verification rates (86.7\%) alongside admitted risky practices (41.5\%) are suggestive of this bias. We interpret our findings as indicative of perceived norms rather than definitive behavior measurements.
 

@@ -1,8 +1,9 @@
+\begin{abstract}
 Citations provide the basis for trusting scientific claims; when they are invalid or fabricated, this trust collapses.
-With the advent of Large Language Models (LLMs), this risk has intensified: LLMs are increasingly used for academic writing, yet their tendency to fabricate citations (``ghost citations'') poses a systemic threat to citation validity.
-To quantify this threat and inform mitigation, we develop \citeb, an open-source framework for large-scale citation verification, and conduct a comprehensive study of citation validity in the LLM era through three complementary experiments.
-We benchmark 13 state-of-the-art LLMs on citation generation across 40 research domains, finding that all models hallucinate citations with significant variation across domains.
-Moreover, we analyze 2.2 million citations from 56,381 papers at top-tier AI/ML and Security venues (2020--2025), finding that 1.07\% of papers contain invalid citations, with rates increasing sharply in 2025.
-Furthermore, we survey 97 researchers, revealing a critical verification gap between stated diligence and actual practices.
-Our findings indicate that unreliable AI tools, combined with inadequate human verification, facilitate the penetration of fabricated citations into the scientific record.
-We discuss implications and propose interventions for researchers, venues, and tool developers.
+With the advent of Large Language Models (LLMs), this risk has intensified: LLMs are increasingly used for academic writing, but their tendency to fabricate citations (``ghost citations'') poses a systemic threat to citation validity.
+To quantify this threat, we develop \citeb, an open-source framework for large-scale citation verification, and conduct a comprehensive study of citation validity in the LLM era through three complementary experiments.
+First, we benchmark 13 LLMs on citation generation task in various research domains, finding that all models hallucinate citations at rate from 14.23\% to 94.93\%.
+Second, we analyze 2.2 million citations from 56,381 papers at AI/ML and Security venues (2020--2025), finding that 1.07\% of papers contain invalid citations, with an 80.9\% increase in 2025.
+Third, we survey 97 researchers, finding that 87.2\% use AI-powered tools in their workflows, 76.7\% of reviewers do not thoroughly check references, and 74.5\% view peer review as ineffective at catching citation errors.
+Based on these findings, we argue that ghost citations represent a systemic threat to academic integrity, and call for coordinated efforts from community to address this challenge.
+\end{abstract}

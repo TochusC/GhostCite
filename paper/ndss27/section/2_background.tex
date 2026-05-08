@@ -3,7 +3,7 @@
 
 Citations serve as a trust mechanism that justifies scientific claims; the validity of citations is therefore central to the integrity of scholarly communication~\cite{greenberg2009how}.
 When citations are invalid, this trust breaks down: readers may be misled by references that do not support, or do not even exist to support, the claims being made.
-Such fabrications are commonly termed ``ghost citations''~\cite{consultmu2026ghost,zoteroforum2018ghost,tay2025why}.
+Such fabrications are commonly termed ``ghost citations''~\cite{consultmu2026ghost,tay2025why}.
 %  \xl{学术论文里不要出现must，最多用should之类的} 
 To understand and address this threat, we first need to clarify three fundamental questions: What exactly are ghost citations, how did they arise, and why do they pose such a risk to scientific research?
 % This section answers these questions by providing background on ghost citations, the risk to scientific research, and the research gaps we aim to address.
@@ -11,23 +11,23 @@ To understand and address this threat, we first need to clarify three fundamenta
 \subsection{Ghost Citations in the Wild}
 \label{sec:background:ghost}
 %  \xl{不要加这些评价famously，评价一个工作只能说first之类的，是否有名，这不是学术层面的}
-The problem of erroneous citations predates the era of generative AI.
+Citation errors existed long before generative AI became widespread.
 Early citation-analysis studies reported that citation errors, including incorrect author names, publication years, page numbers, and even entirely non-existent sources, have been a persistent problem in academic publishing~\cite{sweetland1989errors}.
 Furthermore, Simkin and Roychowdhury~\cite{simkin2005stochastic} estimated that a substantial fraction of citations are copied from secondary sources without consulting the original work, propagating errors through the literature.
 These human errors, while problematic, typically arose from carelessness or negligence rather than intentional fabrication.
 
 % \xl{经常生成的单词是否可以画一个单词大小的图，出现次数越多，单词大小越大}
-However, the emergence of LLMs fundamentally transformed the nature of citation errors, introducing a qualitatively different phenomenon: the wholesale fabrication of references that never existed\cite{oladokun2025hallucitation}.
-Unlike human mistakes, LLM-generated citations are systematically produced through autoregressive token prediction~\cite{vaswani2017attention,bengio2003neural}.
-When generating academic text, LLMs identify high-probability token clusters associated with a research field (authors like ``Vaswani,'' venues like ``NeurIPS,'' and domain-specific terminology) and ``stitch'' them together into plausible but non-existent citations.
-As Bender et al.~\cite{bender2021dangers} claimed, LLMs function as ``stochastic parrots'' that prioritize the structure of language over its truth.
+However, the emergence of LLMs fundamentally transformed the nature of citation errors, introducing a fundamentally different phenomenon: the systematic fabrication of references that never existed\cite{oladokun2025hallucitation}.
+Unlike human mistakes, LLM-generated citations are systematically produced through autoregressive token prediction~\cite{vaswani2017attention}.
+When generating academic text, LLMs identify high-probability token clusters associated with a research field (authors like ``Vaswani,'' venues like ``NeurIPS,'' and domain-specific terminology) and combine them into plausible but non-existent citations.
+As Bender et al.~\cite{bender2021dangers} noted, LLMs function as stochastic parrots that prioritize the structure of language over its truth.
 Because academic citations follow rigid syntactic templates, LLMs can effortlessly mimic this surface form, producing fabricated references indistinguishable from authentic ones.
 
 % \xl{document统一更换，，下面我不再单独批注}
 The phenomenon of LLM hallucination has been extensively studied~\cite{ji2023survey,zhang2025siren,huang2023survey}, with factuality benchmarks such as TruthfulQA~\cite{lin2022truthfulqa} and HaluEval~\cite{li2023halueval} quantifying these failures.
-As generative AI tools proliferated in academic contexts~\cite{lund2023chatgpt,cotton2024chatting,dwivedi2023so}, anecdotal evidence of fabricated citations accumulated in online forums~\cite{zoteroforum2018ghost} and academic blogs~\cite{consultmu2026ghost,tay2025why}.
-Detection efforts have emerged: GPTZero reported hallucinated citations in both ICLR 2026 submissions and NeurIPS 2025 accepted papers~\cite{gptzero2026iclr,gptzero2025nips}, while watermarking~\cite{kirchenbauer2023watermark} and text writing-style analysis~\cite{mitchell2023detectgpt} offer complementary strategies.
-Nevertheless, these tools primarily target AI-generated prose rather than the factual accuracy of citations themselves. Recent reports and empirical studies further underscore the problem's breadth; ACL-focused analyses identified hundreds of hallucinated references~\cite{sakai2026hallucitation}, and domain-specific studies in librarianship documented hallucinated citations in ChatGPT outputs~\cite{oladokun2025hallucitation}.
+As generative AI tools became widespread in academic contexts~\cite{lund2023chatgpt,cotton2024chatting,dwivedi2023so}, reports of fabricated citations accumulated in academic blogs~\cite{consultmu2026ghost,tay2025why}.
+Detection efforts have emerged: GPTZero reported hallucinated citations in both ICLR 2026 submissions and NeurIPS 2025 accepted papers~\cite{gptzero2026iclr,gptzero2025nips}, while watermarking~\cite{kirchenbauer2023watermark} and zero-shot detection based on probability curvature~\cite{mitchell2023detectgpt} offer complementary strategies.
+Nevertheless, these tools primarily target AI-generated prose rather than the factual accuracy of citations themselves. Recent reports and empirical studies further illustrate the problem's scope; ACL-focused analyses identified hundreds of hallucinated references~\cite{sakai2026hallucitation}, and studies in librarianship documented hallucinated citations in ChatGPT outputs~\cite{oladokun2025hallucitation}.
 Nevertheless, we still lack systematic, large-scale analysis of ghost citation prevalence across models and the published literature, as well as a clear understanding of why verification
 behaviors fail to prevent their propagation.
 
@@ -39,15 +39,15 @@ The spread of ghost citations goes beyond mere typographical or formatting error
 \noindent
 \textbf{Impact on Researchers.}
 In normal scholarship, citations ground claims in verifiable prior work and help researchers navigate the literature with confidence~\cite{kaplan1965norms,merton1973sociology}.
-Ghost citations subvert this process by inserting fabricated references that appear legitimate, misdirecting research efforts and wasting resources on phantom threads; when they enter literature reviews or used as starting points for new investigations, they distort scientific truth and propagate misinformation through the research pipeline.
+Ghost citations undermine this process by inserting fabricated references that appear legitimate, misdirecting research efforts and wasting resources on phantom threads; when they enter literature reviews or are used as starting points for new investigations, they corrupt scientific claims and propagate misinformation through the research pipeline.
 In this situation, ghost citations create \textit{Epistemic Pollution}: non-existent studies are cited to support claims, creating an illusion of evidential support~\cite{greenberg2009how}.
 
 \noindent
 \textbf{Impact on Reviewers and Publishers.}
-The academic ecosystem operates on a foundational trust protocol: we assume authors work in good faith, and reviewers rarely verify the work exhaustively~\cite{smith2006peer}.
-Plausible-looking LLM citations exploit this trust gap; verifying 30 to 50 references per paper would impose prohibitive burdens on the already-strained peer review process.
+The research community operates on a foundational presumption of trust: we assume authors work in good faith, and reviewers rarely verify the work exhaustively~\cite{smith2006peer}.
+Plausible-looking LLM citations exploit this trust gap; verifying 30 to 50 references per paper would place unrealistic demands on the already-strained peer review process.
 Our own manual verification required a 16-person research team working for about one month to review 2,530 flagged citations (\Cref{sec:archival_results}), demonstrating that thorough checking demands substantial human time and coordination.
-Publishers and conference organizers lack scalable infrastructure to detect fabricated citations, leaving the burden entirely on human reviewers who have neither the time nor the tools to systematically validate references.
+Publishers and conference organizers lack automated tools to detect fabricated citations, so human reviewers need to validate references manually, a task that is time-consuming and difficult to perform systematically.
 % \xl{这里引用Section5说我们manual验证花了多少人多长时间，下文也需要写突出这个验证的困难，以及我们的工作量}
 
 % \xl{有Scientometrics、bibliometric这个词不}
@@ -56,35 +56,34 @@ Publishers and conference organizers lack scalable infrastructure to detect fabr
 \textbf{Impact on the Research Community.}
 Research impact analysis relies on the citation graph (nodes = publications, edges = citations)~\cite{newman2001structure}.
 Ghost citations inject phantom nodes and invalid edges, undermining citation-based indicators (e.g., Impact Factor, h-index) and network metrics (co-citation, bibliographic coupling), degrading the reliability of quantitative impact assessment.
-More fundamentally, as fabricated citations accumulate in the published record, they erode the trust infrastructure that underpins scholarly communication.
+More fundamentally, as fabricated citations accumulate in the published record, they erode the trust infrastructure that supports academic communication.
 If future LLMs are trained on papers containing ghost citations, these fabrications may be reproduced amplifying errors across generations~\cite{shumailov2024ai}.
-Ultimately, widespread ghost citations may trigger a ``Crisis of Legitimacy'' that forces the research community to shift from presumptive trust to systematic skepticism, imposing unsustainable verification burdens on scientific communication.
+Ultimately, widespread ghost citations may force the research community to shift from presumptive trust to systematic skepticism, imposing unsustainable verification burdens on scientific communication.
 
 \input{figure/Sec3_Methodology/architecture}
 
-\subsection{Research Gap}
+\subsection{Research Questions}
 \label{sec:research_gap}
 
-Ghost citations pose systemic risks across all stakeholders in the research ecosystem, from individual researchers to publishers and the broader scientific community.
-Recent reports and targeted analyses have documented hallucinated citations in conference submissions and accepted papers~\cite{gptzero2026iclr,gptzero2025nips}, as well as in ACL-focused studies~\cite{sakai2026hallucitation}. Yet despite this growing evidence, three critical research gaps remain unaddressed.
+Recent reports and targeted analyses have documented hallucinated citations in conference submissions and accepted papers~\cite{gptzero2026iclr,gptzero2025nips}, as well as in ACL-focused studies~\cite{sakai2026hallucitation}. However, despite this growing evidence, three critical questions remain unanswered.
 
 \noindent
-\textbf{RG1: How can ghost citations be detected at scale?}
-Unlike AI-generated prose detection, citation verification requires cross-referencing against external bibliographic databases, a challenge complicated by the vast heterogeneity of citation formats~\cite{ISO690_2021}, the incompleteness of existing scholarly indices, and the absence of standardized verification protocols.
+\textbf{RQ1: How can ghost citations be detected at scale?}
+Unlike AI-generated prose detection, citation verification requires cross-referencing against external bibliographic databases, a challenge complicated by the vast heterogeneity of citation formats~\cite{ISO690_2021}, the incompleteness of existing academic indices, and the absence of standardized verification protocols.
 Major publishers including Nature, Science, and IEEE have issued policies requiring disclosure of AI usage~\cite{nature2023tools,thorp2023chatgpt,ieee2025ai-policy}, and academic conferences such as ICLR 2026 have established explicit guidelines~\cite{chairs2025iclr}.
 However, policy frameworks remain fragmented, and no scalable, automated verification infrastructure exists to systematically detect fabricated references across the published literature.
 
 \noindent
-\textbf{RG2: What is the current prevalence of ghost citations in the published literature?}
+\textbf{RQ2: What is the current prevalence of ghost citations in the published literature?}
 Prior meta-science measurement studies have demonstrated the value of large-scale empirical analysis in exposing systemic issues, from reproducibility crises~\cite{baker2016reproducibility,ioannidis2005most} to evaluation pitfalls in machine learning~\cite{lipton2018troubling,wagstaff2012machine} and citation manipulation practices~\cite{fister2016toward}.
-Yet no comparable study has systematically quantified the prevalence and characteristics of ghost citations.
-Existing evidence remains largely anecdotal, lacking the rigorous methodology that is necessary to determine whether ghost citations represent just an isolated incident or a widespread undermining of the whole scientific research.
+However, no comparable study has systematically quantified the prevalence and characteristics of ghost citations.
+Existing evidence remains largely informal, lacking the rigorous methodology that is necessary to determine whether ghost citations represent just an isolated incident or a widespread undermining of the whole scientific research.
 
 \noindent
-\textbf{RG3: Why do verification practices fail to prevent ghost citations from reaching publication?}
+\textbf{RQ3: Why do verification practices fail to prevent ghost citations from reaching publication?}
 Surveys and guidelines routinely advise researchers to verify AI-generated contents\cite{cotton2024chatting,dwivedi2023so}, and many researchers report that they do so\cite{lee2025impact}.
-Yet the gap between self-reported verification and actual behavior has not been systematically studied: it remains unclear how often researchers rely on AI-generated citations, under what conditions verification is skipped, and which behavioral or cognitive factors allow fabricated citations to persist in the pipeline from model output to published paper.
+But whether researchers' self-reported verification behaviors match their actual practices has not been systematically studied: it remains unclear how often researchers rely on AI-generated citations, under what conditions verification is skipped, and which behavioral or cognitive factors allow fabricated citations to persist in the pipeline from model output to published paper.
 
 % \xl{这个描述也相对朴素，比如解决了解析的难题，设计成一定的方法等等，提高准确度xxx。对，最重要的一个没有写，工具的准确度}
-Our work addresses all three research gaps through conducting the first comprehensive, multi-dimensional analysis of ghost citations in the LLM era, combining technical development with empirical measurement and behavioral analysis.
+Our work aims to address these three research questions through a comprehensive, multi-dimensional analysis of ghost citations in the LLM era, combining technical development with empirical measurement and behavioral analysis.
 We develop \citeb, an automated citation verification pipeline with robust parsing, cascaded multi-source retrieval, and calibrated similarity matching to achieve the high accuracy and support high-throughput validation. Leveraging \citeb, we conduct three complementary studies: (1) a systematic benchmark of citation hallucination rates across 13 LLMs under varying conditions (RG1; \Cref{sec:llm_results}); (2) a large-scale audit of 56,000+ published papers to quantify real-world prevalence (RG2; \Cref{sec:archival_results}); and (3) a user study investigating the behavioral factors that enable fabricated citations to reach publication (RG3; \Cref{sec:survey_results}).

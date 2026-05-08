@@ -1,24 +1,25 @@
 \section{Hunting for Ghosts: Archival Analysis}
 \label{sec:archival_results}
 
-In this section, We analyze 2.2 million citations from 56,381 papers published at eight top-tier AI/ML and Security venues (2020--2025), aiming to quantify whether ghost citations have penetrated the published scientific record.
+In this section, we present the archival analysis results, aiming to quantify the prevalence of invalid citations in published literature and track their temporal trends.
 
 \noindent
-\textbf{Statistics Overview.}
+\textbf{Dataset Overview.}
 Table~\ref{tab:collected_papers} provides an overview of the 56,381 papers collected from eight top-tier venues across AI/ML and Security domains from 2020 to 2025. These papers covering NeurIPS (20,387), AAAI (13,821), ICML (11,192), and IJCAI (5,535) from AI venues, as well as USENIX (1,915), CCS (1,756), S\&P (1,073), and NDSS (702) from Security venues. Applying \citeb to all 56,381 papers, we extracted 2,199,409 citations. After filtering OCR extraction errors, we flagged 2,530 as potentially problematic (matched title similarity below $\theta = 0.9$).
 
 \input{table/Sec6_Paper/tab_collected_papers}
 
 \subsection{Detection of Invalid Citations}
 
-To ensure accuracy, we manually reviewed all 2,530 flagged citations, classifying each by: (1) attempting to locate it in bibliographic databases, (2) if found, verifying its metadata, checking if it was low-quality (e.g., typos, metadata errors), and (3) if not found, determining it as untraceable citation. 
+To ensure accuracy, we manually reviewed all 2,530 flagged citations, classifying each by:
+\begin{enumerate}
+    \item Attempting to locate it in bibliographic databases (e.g., Google Scholar, DBLP, IEEE Xplore, ACM Digital Library);
+    \item If found, verifying its metadata and checking for low-quality issues (e.g., typos, metadata errors);
+    \item If not found, determining it as an untraceable citation.
+\end{enumerate}
 This process took approximately one month, with each citation independently reviewed for consistency. Two experts researcher subsequently reviewed all invalid citations to ensure accuracy.
 After manual verification, we classified the 2,530 flagged citations into three categories:
 \begin{itemize}
-    \setlength{\itemsep}{0pt}
-    \setlength{\topsep}{0pt}
-    \setlength{\partopsep}{0pt}
-    \setlength{\parsep}{0pt}
     \item \textit{Non-Academic Source}: citations pointing to non-academic sources (e.g., websites, blogs, repositories);
     \item \textit{Valid (Manual Match)}: citations verified as valid through extensive manual search;
     \item \textit{Invalid}: citations confirmed as invalid, including \textit{metadata error} (incorrect metadata such as wrong title, authors, venue) and \textit{ghost citation} (untraceable citations that cannot be found in any major academic database).
@@ -26,7 +27,9 @@ After manual verification, we classified the 2,530 flagged citations into three 
 Of the 2,530 flagged citations, 490 (19.4\%) were non-academic sources, 1,301 (51.4\%) were verified as valid through extensive manual search, and 739 (29.2\%) were confirmed as invalid (136 error citations and 603 ghost citations).
 % \xl{似乎没有解释为什么有1301个valid的被我们的工具判断为invalid了}
 \textit{In total, 604 papers (1.07\% of 56,381)} contained at least one invalid citation, with 133 papers (0.24\%) containing error citations and 486 papers (0.86\%) containing ghost citations, with 15 papers having both types. 
-We present representative examples below to illustrate the rationale behind our classification and the characteristics of each invalid citation type:
+
+\subsection{Case Studies of Invalid Citations}
+We present several representative examples of invalid citations below to illustrate the rationale behind our classification and the characteristics of each invalid citation type:
 
 
 \begin{casestudybox}{Case Study 1: Metadata Error Citation.}
@@ -83,18 +86,16 @@ Our analysis shows that invalid citations are widespread across all research com
 
 \input{table/Sec6_Paper/tab_invalid_by_venue}
 
-\noindent\textbf{Distribution by Venue.}
-\cref{tab:invalid_by_venue} presents the distribution of invalid citations across the eight venues studied, broken down into \textit{Error} (incorrect metadata) and \textit{Ghost} (untraceable) categories.
-Invalid citations are present across \textit{all venues}, with NeurIPS exhibiting the highest absolute count (391 papers) and NDSS showing the highest proportion (2.56\% of papers) with invalid citations. 
+\noindent\textbf{Invalid Citations Are Present across All Venues.}
+\cref{tab:invalid_by_venue} shows that invalid citations are present across \textit{all venues}, with NeurIPS exhibiting the highest absolute count (391 papers) and NDSS showing the highest proportion (2.56\% of papers) with invalid citations. 
 While AI/ML conferences have a much higher absolute number of papers with invalid citations (largely due to their much greater publication volumes), the overall proportion of papers with invalid citations is remarkably similar: 1.08\% for AI venues vs. 1.01\% for Security venues. 
 This prevalence suggests that citation integrity issues are not confined to any particular research community.
 
 \noindent
-\textbf{Distribution per Paper.}
+\textbf{Clustered Invalid Citations May Indicate AI-Assisted Generation.}
 We additionally analyze the distribution of invalid citations within individual papers.
 The distribution is heavily right-skewed: 544 papers (88.7\%) contain only a single invalid citation, while 68 papers (11.3\%) contain two or more invalid citations, with the maximum being \textit{9} invalid citations in a single paper.
-Our analysis shows that clear-cut AI-induced hallucinated citations often appear in \emph{batches}: papers containing multiple fabricated or entirely non-existent references at once. 
-Thus, a paper exhibiting clusters of invalid citations is a stronger signal of likely AI tool usage, capable of generating groups of spurious ``ghost citations'' in one go. The presence of multiple invalid citations within a paper is more indicative of systematic, AI-assisted citation generation.
+Papers with multiple invalid citations (68 papers, 11.3\%) may be more likely to reflect AI-assisted generation, as batch production of fabricated references aligns with LLMs' capacity to generate groups of fabricated citations in a single prompt. However, we cannot definitively attribute any individual case to AI use without direct evidence.
 % In the contrast, most isolated errors tend to involve specific mistakes in core citation details or untraceable citations. For those metadata errors, they are not merely harmless glitches; but contains information that is clearly incorrect that may mislead readers by pointing to incorrect or unrelated works.
 % And for the untraceable citations, they are simply not found in any major academic database, even with extensive manual search. 
 
@@ -102,11 +103,10 @@ Thus, a paper exhibiting clusters of invalid citations is a stronger signal of l
 \subsection{Temporal Trends and Propagation}
 
 To understand how invalid citations have evolved over time and whether they propagate across papers, we analyze temporal trends from 2020 to 2025 and investigate ``repeated invalid citations''.
-Our analysis reveals that invalid citation rates show a \textit{sharp increase in 2025}, This surge aligns temporally with broader shifts in AI-assisted writing practices, but our data alone does not establish causality.
+Our analysis reveals that invalid citation rates increased by \textit{80.9\% in 2025} (from a 2020--2024 average of 0.89\% to 1.61\%). This surge aligns temporally with broader shifts in AI-assisted writing practices, but our data alone does not establish causality.
 
 \noindent\textbf{Temporal Trends.}
-Figure~\ref{fig:papers_with_invalid_citations_timetrend} visualizes the temporal trends in papers with invalid citations from 2020 to 2025, both overall and across individual venues.
-The proportion of papers with invalid citations remained relatively stable from 2020 to 2024 (ranging from 0.76\% to 0.98\%), followed by a sharp increase in 2025 to 1.61\%. Comparing 2025 to the 2020--2024 average (0.89\%), we observe an 80.9\% increase in the invalid citation rate, \textit{highlighting 2025 as a dramatic inflection point.} 
+\cref{fig:papers_with_invalid_citations_timetrend} shows that the proportion of papers with invalid citations remained relatively stable from 2020 to 2024 (ranging from 0.76\% to 0.98\%), then rose to 1.61\% in 2025---an \textit{80.9\% increase} over the 2020--2024 average (0.89\%). 
 This surge coincides temporally with the widespread adoption of autonomous AI agent workflows capable of generating entire paper sections and references with minimal human oversight.
 We hypothesize that invalid citations have evolved across three distinct eras: in the pre-LLM period, such errors primarily stemmed from human oversight or citations to restricted-access literature; during the early LLM era (2023--2024), conversational assistants like ChatGPT showed limited impact due to constrained reference-generation capabilities; however, the emergence of agentic workflows in 2025 fundamentally altered this landscape by \textit{enabling fully autonomous content generation, allowing ghost citations to reach research manuscripts at scale.}
 From a research domain perspective, AI/ML venues exhibit a more pronounced increase in invalid citation counts compared to Security venues, likely reflecting earlier and broader adoption of LLM-based tools within AI/ML research communities.
@@ -114,7 +114,7 @@ From a research domain perspective, AI/ML venues exhibit a more pronounced incre
 \input{figure/Sec6_Paper/paper_integrity}
 
 \noindent
-\textbf{Repeated Invalid Citations.}
+\textbf{Invalid Citations Propagate across Papers.}
 A particularly concerning phenomenon we observed is ``repeated invalid citations'': invalid citations (e.g., metadata or title errors) that appear in multiple independent papers.
 Table~\ref{tab:repeated_citation_errors} lists the most frequently repeated invalid citations in our corpus.
 The most notable example is a citation with an erroneous title (``AugMix'') that appears in 16 separate papers across AAAI, IJCAI, and NeurIPS.
@@ -128,8 +128,9 @@ The most notable example is a citation with an erroneous title (``AugMix'') that
     \setlength{\topsep}{0pt}
     \setlength{\partopsep}{0pt}
     \setlength{\parsep}{0pt}
-    \item \textit{1.07\%} of papers contain at least one invalid citation, with a sharp \textit{80.9\%} surge in 2025; invalid citations appear across \textit{all venues}.
-    \item Repeated invalid citations propagate across papers (e.g., the same erroneous title appears in 16 papers), indicating systematic error diffusion.
+    \item \textit{1.07\%} of papers contain at least one invalid citation, with an \textit{80.9\%} increase in 2025; invalid citations appear across \textit{all venues}.
+    \item \textit{68 papers} (11.3\%) contain multiple invalid citations, consistent with batch-generation behavior enabled by LLM tools.
+    \item Repeated invalid citations propagate across papers (e.g., the same erroneous title appears in 16 papers), suggesting researchers may copy from papers that already contain errors.
 \end{itemize}
 \end{keyfindingsSidebar}
 

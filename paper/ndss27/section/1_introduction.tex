@@ -1,64 +1,63 @@
 \section{Introduction}
 
-Citations serve as a trust mechanism that justifies scientific claims~\cite{kaplan1965norms,merton1973sociology}: readers assume that cited work exists and supports the claims being made, and rarely verify that it does~\cite{simkin2003read}. However, when a citation is invalid, this trust mechanism collapses.
-The advent of AI-assisted academic writing has introduced a novel threat to this scholarly trust infrastructure~\cite{thorp2023chatgpt}. \added{This threat is especially acute in security research, where literature reviews underpin threat modeling, vulnerability taxonomy construction, and reproducibility of offensive and defensive techniques; a fabricated citation in a security paper can misdirect defensive investment, introduce phantom prior art, or undermine the evidentiary chain of a claimed attack or mitigation.} Researchers increasingly leverage LLMs to synthesize literature reviews, curate related work, or compile reference lists.
-When prompted for citations, these systems do not look up references. Instead, leveraging their inherent generative nature~\cite{vaswani2017attention}, they \textit{synthesize} references by combining statistically correlated tokens (real author names, plausible-sounding titles, and prestigious venue names) into citations that appear authentic despite being entirely fabricated. 
-This phenomenon commonly described as ``ghost citations''~\cite{zoteroforum2018ghost,consultmu2026ghost,tay2025why}, representing a qualitatively new category of academic misconduct: high-fidelity fabrications that exploit the format-compliance of bibliographic conventions to evade detection. Such ghost citations pose a systemic threat to the integrity of scholarly communication.
-The emergence of ghost citations has caught the attention of prestigious conferences and academic governing bodies. For instance, ICLR 2026 chairs issued guidelines warning against AI-generated content, including fabricated citations~\cite{chairs2025iclr}, and major publishers such as IEEE have established policies requiring disclosure of AI usage in manuscripts~\cite{ieee2025ai-policy}.
+Citations serve as a trust mechanism that justifies scientific claims~\cite{kaplan1965norms}: readers assume that cited work exists and supports the claims being made, and rarely verify that it does~\cite{simkin2003read}. However, when a citation is invalid, this trust mechanism collapses.
+A fabricated citation can misattribute foundational ideas, introduce phantom prior work, misdirect subsequent research investment, or undermine the evidentiary chain of a claimed contribution, threatening the integrity of the entire research community.
+The advent of AI-assisted writing has introduced a novel threat to this academic trust infrastructure.
+Researchers increasingly leverage LLMs to synthesize literature reviews, curate related work, or compile reference lists~\cite{mohammadi2025generative}.
+When prompted for citations, these systems do not look up references. Instead, leveraging their inherent generative nature, they \textit{synthesize} references by combining statistically correlated tokens (real author names, plausible-sounding titles, and prestigious venue names) into citations that appear authentic despite being entirely fabricated~\cite{vaswani2017attention}. 
+This phenomenon commonly described as ``ghost citations''~\cite{consultmu2026ghost,tay2025why}, representing a new category of academic misconduct: high-fidelity fabrications that exploit the format-compliance of bibliographic conventions to evade detection. 
+The emergence of ghost citations has caught the attention of conferences and governing bodies in academia. For instance, ICLR 2026 chairs issued guidelines warning against AI-generated content, including fabricated citations~\cite{chairs2025iclr}, and major publishers such as IEEE have established policies requiring disclosure of AI usage in manuscripts~\cite{ieee2025ai-policy}.
 Recent reports also document hallucinated citations in conference submissions and accepted papers, as well as in domain-specific analyses~\cite{gptzero2025nips,gptzero2026iclr,sakai2026hallucitation}.
-% \xl{看看USENIX的规定要不要也说一下，毕竟投稿的是USENIX}
-% \xzy{Usenix似乎没有明确发布过关于AI的政策，没搜到相关信息}
-Yet despite growing awareness, we lack systematic answers to three fundamental questions: 
-\textit{Q1: How prevalent is this problem? Q2: Has it already contaminated the published scientific record? Q3: And why do verification mechanisms fail?}
+However, despite growing awareness, we still lack systematic answers to three fundamental questions: 
+\begin{itemize}
+    \item \textit{Q1: How frequently do LLMs hallucinate citations across research domains?} 
+    \item \textit{Q2: To what extent have invalid citations entered published academic literature?} 
+    \item \textit{Q3: Why do authors and reviewers fail to detect them?} 
+\end{itemize}
 
 % \xl{2.3/3.1总结的challenge或者gap在这里也没有提，应该提写出来，一方面是之前说过的introduction是对全文的总结，abstract里面也要写有gap或者挑战的，不是那么容易的：并不是我们现在写的有3个问题，然后我们开发了一个框架，就完事了，肯定没有这么容易的。我们解决了一堆挑战。摘要里面简单些半句话到 一句话，有各种挑战比如xx.introduction这里要写2-3句话。2.3/3.1在abstract和introduction的缩影。
 % % 一方面是研究有3个gap、另外是为了解决这3个gap，还有若干挑战需要解决，否则这个研究意义也不大，没有方法创新，只有结果呈现。
 % }
 \noindent
 \textbf{Research Gap}
-Prior work and policy discussions highlight the risks of ghost citations~\cite{chairs2025iclr,thorp2023chatgpt,oladokun2025hallucitation}, but to answer the above questions, three practical gaps remain. First, scalable detection is difficult because citations are heterogeneous~\cite{ISO690_2021}, and need to be verified against incomplete and inconsistent bibliographic databases; this makes automated, high accuracy verification challenging at scale. 
-Second, we still lack large-scale, empirical measurement of how prevalent ghost citations are in both LLM outputs and the published record. 
-Third, we lack a clear explanation for why verification practices fail: when and why authors or reviewers skip checks, and how those behaviors allow fabricated citations to persist. 
-\added{Fourth, the security community lacks evidence on how ghost citations specifically compromise trust in security literature, despite the field's reliance on precise attribution for tracking threat evolution and validating defensive claims.}
-These gaps motivate our comprehensive study.
+Prior work and policy discussions highlight the risks of ghost citations~\cite{chairs2025iclr,thorp2023chatgpt,oladokun2025hallucitation}, but to answer the above questions, three practical gaps persist.
+First, the scale of the problem is unknown: we have no empirical measurement of how often LLMs fabricate and how many invalid citations have entered the published literature.
+Second, there is no scalable way to detect citations validality, because they often deviate from standard formats and need to be verified against multiple bibliographic sources.
+Third, we lack a clear understanding of how invalid citations go through reseacher's draft and peer review process and end up in the published record without being checked.
+These gaps motivate our work, which develops a technical framework for large-scale citation verification and applies it to systematically analyze the prevalence of ghost citations in LLM outputs and the published record, as well as the human behaviors that allow them to persist.
+
 
 \noindent
 \textbf{Our Study.}
-In this paper, we develop \citeb, an open-source framework for large-scale citation verification.
-It combines robust reference parsing with a cascaded, multi-source retrieval strategy (local bibliographic indexes, academic databases, and web search).
-To achieve scalability and robustness against citation format variations, it leverages caching, LLM-assisted re-parsing, and a similarity-based matching scheme\cite{levenshtein1966binary} to verify citations at scale (Section~\ref{sec:methodology}).
-Using \citeb, we conduct a comprehensive, multi-dimensional analysis of citation validity in the age of LLMs, addressing the three research questions outlined above through complementary studies (Section~\ref{subsec:experiment_design}).
+In this paper, we develop \citeb, 
+an open-source framework for large-scale citation verification, and conduct three complementary experiments that answer the above research questions.
 
-\textit{LLM Benchmark (Q1).}
-We evaluate 13 state-of-the-art LLMs across 40 computer science research domains aligned with arXiv CS subject classes~\cite{arxivCSClasses}, finding that all models hallucinate citations, with substantial variation across domains (Section~\ref{sec:llm_results}).
-% \xl{这个结论需要注意，联网搜索思考}
-% \xzy{已在所有关键结论中删去相关内容}
+\textit{Experiment 1: LLM Benchmark}
+We evaluate 13 state-of-the-art LLMs across 40 computer science research domains aligned with arXiv CS subject classes~\cite{arxivCSClasses}, finding that all models hallucinate citations at rates ranging from 14.23\% to 94.93\%, with substantial variation across domains (Section~\ref{sec:llm_results}).
 
-\textit{Archival Analysis (Q2).}
-% \xl{Q1、Q2、Q3这里列举的都有点朴素，直接写我们分析了、我们开发了、xxx，没有突出我们的亮点、工作量，比如我们系统性地分析了xxx，我们招募了多少人员花了多长时间验证了xxx，我们发布了多久的问卷，通过什么渠道发放，也大概需要点出来一些，不用写太多，就是要加一些修饰的词语。突出我们这个工作不是像写的那样很简单就能够做的，在这个过程中付出了大量的人力、时间成本等等，这样的工作才是有意义的，否则看上去就是简单爬了一些论文，调用api做了验证，然后就没了}
-% \xl{最重要的一个没有写，工具的准确度}
-We ethically collected~\cite{bailey2012menlo} 56,381 papers from eight AI/ML and Security venues spanning 2020 to 2025, selected by CSRankings~\cite{csrankings}. After employing \citeb to analyze 2.2 million citations, we manually verified flagged items and identified 604 papers (1.07\%) containing invalid citations. Invalid citation rates increased sharply in 2025, and we observe evidence of error propagation across papers (Section~\ref{sec:archival_results}).
+\textit{Experiment 2: Archival Analysis.}
+We collected~\cite{bailey2012menlo} 56,381 papers from eight AI/ML and Security venues spanning 2020 to 2025. After employing \citeb to analyze 2.2 million citations of these papers, our system flagged 2,530 citations for unmathced metadata.
+We then manually verified each one, identifying 739 invalid citations across 604 papers (1.07\% of 56,381) are definitively invalid, with an 80.9\% increase in invalid citation rates in 2025 (from a 2020--2024 average of 0.89\% to 1.61\%), and observed phenomena of error propagation across papers (Section~\ref{sec:archival_results}).
 
-\textit{User Study (Q3).}
-We survey 97 researchers and analyze 94 valid responses, finding a verification gap: while most claim to verify AI-generated citations, a substantial fraction admit to copy-pasting BibTeX without checking. Among reviewers, most do not thoroughly check references, indicating a trust-by-default norm that allows invalid citations to persist (Section~\ref{sec:survey_results}).
+\textit{Experiment 3: User Study.}
+We issued a survey to 97 researchers across various roles  and research domains, asking about their practices and perceptions regarding citation validity, and received 94 valid responses. We find 41.5\% of authors admit to copy-pasting BibTeX entries without checking. 76.7\% of reviewers do not thoroughly inspect references, 74.5\% of all respondents view peer review as ineffective at catching citation errors, while 70.2\% strongly support the idea of automated checks to catch citation errors (Section~\ref{sec:survey_results}).
 
-Our findings suggest that LLMs are unreliable for citation generation, that invalid citations have penetrated the published record, and that human verification mechanisms often fail to catch them.
-\added{For the security community specifically, ghost citations constitute a new form of computing abuse that erodes the evidentiary foundations of threat research, pentesting methodologies, and vulnerability disclosure practices.}
+Our findings reveal that unreliable AI tools, combined with inadequate human verification, facilitate the penetration of fabricated citations into published literature. Based on our empirical evidence, We discuss implications and propose interventions for researchers, venues, and tool developers, highlighting the need for coordinated efforts to address this emerging threat to academic integrity.
 Our work follows the tradition of meta-science measurement studies that expose structural problems in research practices~\cite{baker2016reproducibility,ioannidis2005most,rossow2012prudent,schloegel2025confusing}.
-Just as prior work revealed reproducibility crises and evaluation pitfalls~\cite{baker2016reproducibility,rossow2012prudent}, we identify an emerging threat to the integrity of scholarly citation, one that demands immediate attention as AI adoption accelerates. 
-We argue that the scientific community should treat ghost citations as a systemic threat to scholarly integrity, and that addressing this challenge requires coordinated efforts from researchers, venues, and tool developers.
+Just as prior work revealed reproducibility crises and evaluation pitfalls~\cite{baker2016reproducibility,rossow2012prudent}, we identify an emerging threat to the integrity of academic citation, and provide a technical framework and empirical evidence to inform the community's response to this challenge.
 
+\noindent
 \textbf{Contributions.}
 Our contributions are as follows:
 
 \begin{enumerate}
-    \item \textbf{Technical baseline for citation verification.} \added{We frame ghost citations as a systemic threat to research integrity, particularly in security, and develop} \textsc{GhostCite}, an open-source framework that verifies citations at scale, providing a replicable implementation example for venues, publishers, and future work.
+    \item \textbf{Technical baseline for citation verification.} We develop \textsc{CiteVerifier}, an open-source framework that verifies citations at scale, providing a replicable implementation example for researchers and future work.
 
-    \item \textbf{Large-scale benchmark of LLM citation accuracy.} We evaluate \textit{13} LLMs across \textit{40} domains on \textit{375,440} citations, showing hallucination rates of \textit{14.23--94.93\%} with significant research domain sensitivity.
+    \item \textbf{Comprehensive benchmark of LLM citation hallucination.} We evaluate \textit{13} LLMs across \textit{40} domains on \textit{375,440} generated citations, revealing widespread citation hallucination across models and domains.
     
-    \item \textbf{Empirical analysis of the published record.} We analyze \textit{2.2M} citations from \textit{56,381} papers (2020--2025), finding \textit{604/56,381 (1.07\%)} with invalid citations, an \textit{80.9\%} increase in 2025, and evidence of propagation (up to \textit{16} repeated errors).
+    \item \textbf{Empirical analysis of published literature.} We analyze \textit{2.2M} citations from \textit{56,381} papers (2020--2025), documenting the presence and increasing prevalence of invalid citations in the published literature.
     
-    \item \textbf{Behavioral analysis of verification practices.} Through a survey of \textit{94} valid responses (97 total, 3 removed), we identify a \textit{verification gap} across roles: \textit{41.5\%} copy-paste BibTeX without checking, \textit{76.7\%} of reviewers do not thoroughly check references, and 74.5\% view peer review as ineffective at catching metadata errors while 70.2\% strongly support automated checks.
+    \item \textbf{User study of researcher practices.} We survey \textit{97} researchers across various roles and research domains, characterizing AI adoption rates, verification behaviors, and community attitudes toward citation validity and potential interventions.
  
 \end{enumerate}
 

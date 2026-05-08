@@ -64,30 +64,30 @@ The results show no consistent correlation between batch size and hallucination 
 \subsection{Domain-Level Hallucination Rates}
 \label{app:domain_sensitivity}
 
-
-
+\input{table/Appendix/tab_citation_stability}
 
 Table~\ref{tab:domain_sensitivity} presents citation hallucination rates by research domain (40 CS subfields), aggregated across all 13 models and ranked from highest to lowest.
 
 \input{table/Appendix/tab_domain_sensitivity}
 
-\input{table/Appendix/tab_citation_stability}
 
+\subsection{Citation Stability and Cross-Model Overlap}
 
+\label{app:stability_overlap}
+\Cref{tab:citation_stability} reports stability statistics for valid versus hallucinated citations.
+We define \emph{citation stability} as the degree to which a model generates identical citations when repeatedly prompted with the same configuration.
+Concretely, for each (model, config) pair, where a config is defined by the combination of research topic, requested number of references, chain-of-thought setting, and online-search setting. We aggregate all citations produced across repeated runs.
+The stability score is computed as:
+\[
+\text{Stability} = 1 - \frac{|\text{Unique Titles}|}{|\text{Total Citations}|}
+\]
+A score of 1 indicates perfect consistency (the model always outputs the same papers), while a score of 0 indicates maximal variability (no repetition across runs).
+As shown in \cref{tab:citation_stability}, valid citations exhibit markedly higher stability (mean up to 0.58 for DeepSeek and 0.57 for Qwen-3) than hallucinated ones (mean up to 0.23).
+This suggests that real papers that are strongly encoded in parametric memory are recalled repeatedly, whereas fabricated references are generated more arbitrarily.
 
-\subsection{Paper Collection Statistics}
-\label{app:collected_papers}
-
-\input{table/Appendix/tab_batch_size}
-
-
-The complete breakdown of papers collected by conference and year (2020--2025) is shown in Table~\ref{tab:collected_papers} in the main text.
-
-\subsection{Repeated Invalid Citations in Published Papers}
-\label{app:repeated_citations}
-
-The complete list of repeated invalid citations is shown in Table~\ref{tab:repeated_citation_errors} in the main text.
-
+Table~\ref{tab:most_cited_by_topic} presents the most frequently generated valid citations for each of the 40 research domains in our LLM benchmark experiment.
+These papers represent the references that LLMs most consistently recall, suggesting they are strongly encoded in the models' parametric memory due to high frequency in training data.
+Seminal works such as ``NeRF'' (Graphics), ``RAG'' (Computation \& Language), and ``U-Net'' (Computer Vision) appear at the top, reflecting the influence of foundational papers in each field.
 
 \subsection{Survey Response Details (Full)}
 \label{app:survey_details_full}

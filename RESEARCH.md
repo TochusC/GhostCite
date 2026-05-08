@@ -114,4 +114,4 @@ Our detected 1.07% invalid citation rate is likely conservative. The threshold-b
 
 ---
 
-*Last updated: 2026-05-04*
+*Last updated: 2026-05-08*
