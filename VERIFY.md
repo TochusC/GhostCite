@@ -43,11 +43,11 @@
   > - See `paper/ndss27/section/5_llm_results.tex`, Table `tab:model_validity`
 
 - [x] **375,440 citations generated from 22,800 API interactions**
-  > Verified against experiment logs. 331,809 successfully extracted (88.38% extraction rate) from 20,653 well-formed JSON outputs.
+  > Verified against experiment logs. 331,809 successfully extracted (88.38% extraction rate) from 20,653 well-formed JSON outputs (90.58% format compliance).
   > - See `paper/ndss27/section/5_llm_results.tex`
 
 - [x] **Hallucination rates: 14.23% (DeepSeek) to 94.93% (Hunyuan)**
-  > Verified against classified output data. DeepSeek is best-performing; Hunyuan is worst.
+  > Verified against classified output data. DeepSeek is best-performing; Hunyuan is worst. Roughly 6.7$\times$ gap.
   > - See `paper/ndss27/section/5_llm_results.tex`, Table `tab:model_validity`
 
 - [x] **40 research domains aligned with arXiv CS subject classes**
@@ -56,33 +56,45 @@
 
 - [x] **Domain sensitivity: 51.39 percentage point spread across domains**
   > Average hallucination rates range from 28.80% (Computation and Language) to 80.19% (Digital Libraries).
-  > - See `paper/ndss27/Tables/Sec5_LLM/domain_sensitivity.tex`
+  > - See `paper/ndss27/section/5_llm_results.tex`, Table `tab:domain_sensitivity`
 
 - [x] **LLM-as-judge accuracy: 38% average (below random guessing)**
   > Each of 13 models judged 100 citations (50 valid, 50 invalid). ERNIE highest at 56% but with 88% false positive rate on valid citations.
   > - See `paper/ndss27/section/5_llm_results.tex`, Table `tab:judge_accuracy`
 
 - [x] **Temporal pattern: hallucination rates increase with publication year (R² = 0.94)**
-  > Exponential fit to year-vs-hallucination count data. Valid citations show different distribution.
+  > Exponential fit to year-vs-hallucination count data. Rates rise from 27.61% (2000) to 98.75% (2025).
   > - See `paper/ndss27/section/5_llm_results.tex`, Figure `fig:temporal_distribution_barplot`
+
+- [x] **Valid citations more stable than hallucinated (DeepSeek 0.58 vs 0.23)**
+  > Stability analysis across repeated runs. Well-known titles (NeRF, RAG, U-Net) recur.
+  > - See `paper/ndss27/section/5_llm_results.tex`, Appendix `app:stability_overlap`
 
 ### Archival Analysis Claims
 
 - [x] **56,381 papers from 8 venues (2020–2025)**
   > Venue counts: NeurIPS (20,387), AAAI (13,821), ICML (11,192), IJCAI (5,535), USENIX (1,915), CCS (1,756), S&P (1,073), NDSS (702). Total = 56,381.
-  > - See `paper/ndss27/section/6_paper_results.tex`, Table `tab:collected_papers` (Appendix)
+  > - See `paper/ndss27/section/6_paper_results.tex`, Table `tab:collected_papers`
 
 - [x] **2,199,409 citations extracted**
   > Verified against CiteVerifier output logs.
   > - See `paper/ndss27/section/6_paper_results.tex`
 
+- [x] **739 invalid citations confirmed (136 metadata errors + 603 ghost citations)**
+  > Of 2,530 flagged: 490 non-academic, 1,301 valid, 739 invalid. 136 error citations + 603 ghost citations.
+  > - See `paper/ndss27/section/6_paper_results.tex`
+
 - [x] **604 papers (1.07%) contain at least one invalid citation**
-  > 2,530 flagged → 739 confirmed invalid (136 metadata errors + 603 ghost citations) → 604 unique papers. 15 papers had both types.
+  > 133 papers (0.24%) with error citations; 486 papers (0.86%) with ghost citations; 15 papers had both.
   > - See `paper/ndss27/section/6_paper_results.tex`
 
 - [x] **80.9% increase in 2025 over 2020–2024 average**
   > 2020–2024 average: 0.89%; 2025: 1.61%. Increase = (1.61 - 0.89) / 0.89 = 80.9%.
   > - See `paper/ndss27/section/6_paper_results.tex`, Figure `fig:papers_with_invalid_citations_timetrend`
+
+- [x] **68 papers (11.3%) contain multiple invalid citations (max 9)**
+  > Clustered invalid citations may indicate AI-assisted generation.
+  > - See `paper/ndss27/section/6_paper_results.tex`
 
 - [x] **Repeated invalid citation appears in 16 independent papers**
   > "AugMix" erroneous title traced to OpenReview's cite button. Appears across AAAI, IJCAI, and NeurIPS.
@@ -95,7 +107,7 @@
 ### Survey Claims
 
 - [x] **97 responses, 94 valid (3 removed for inconsistency)**
-  > Paired reverse-worded items flagged 3 inconsistent responses. Remaining 94 analyzed.
+  > Paired reverse-worded items (Q38/Q39) flagged 3 inconsistent responses. Remaining 94 analyzed.
   > - See `paper/ndss27/section/7_survey_results.tex`
 
 - [x] **87.2% use AI tools for research (n=86)**
@@ -112,6 +124,18 @@
 
 - [x] **80.0% of reviewers never suspect fake citations (n=30)**
   > 24 of 30 reviewers reported never suspecting fabricated references in submissions.
+  > - See `paper/ndss27/section/7_survey_results.tex`
+
+- [x] **74.5% view peer review as ineffective at catching citation errors**
+  > Combined "not very effective" + "ineffective" responses.
+  > - See `paper/ndss27/section/7_survey_results.tex`
+
+- [x] **76.6% consider it a "major problem" or "critical crisis"**
+  > 44.7% critical crisis + 31.9% major problem = 76.6%.
+  > - See `paper/ndss27/section/7_survey_results.tex`
+
+- [x] **91.5% attribute responsibility to authors alone**
+  > 86 of 94 respondents blame authors. 3.2% reviewers, 2.1% publishers, 2.1% AI developers.
   > - See `paper/ndss27/section/7_survey_results.tex`
 
 - [x] **70.2% strongly support automated checks**

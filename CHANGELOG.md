@@ -6,23 +6,34 @@
 
 ## 2026-05-08
 
-### NDSS 2027 Submission
+### Meta Document Refresh — Synchronized with Latest Paper
 
 **Created by**: AI Assistant
 
 **Changes**:
 
-1. **Submitted to NDSS 2027**
+1. **RESEARCH.md — Comprehensive rewrite**
+   - Added 4-stage "Ghost Citation Lifecycle" (Generation → Adoption → Review Failure → Publication & Propagation)
+   - Restructured recommendations to 4 stakeholders (Researchers, Conferences/Journals, AI Tool Developers, Research Community)
+   - Updated all key numbers to match latest paper (e.g., 739 invalid = 136 errors + 603 ghosts; 97 surveyed → 94 valid)
+   - Added "Limitations" section (Online/CoT limits, detection conservatism, external validity, survey bias)
+   - Updated academic judgments and methodology notes
+
+2. **README.md — Content sync**
+   - Updated "Key Contributions" to match 4 explicit contributions from Introduction
+   - Added "The Ghost Citation Lifecycle" quick summary
+   - Updated directory structure to include `experiment/citeverifier/`
+   - Updated key numbers (97 responses, 94 valid)
+
+3. **VERIFY.md — Claims verification**
+   - Added new claims: stability analysis (0.58 vs 0.23), clustering (68 papers, 11.3%), survey severity (76.6%), responsibility (91.5%)
+   - Updated archival claim breakdown: 739 invalid = 136 errors + 603 ghosts
+   - Added LLM benchmark format compliance numbers (90.58% format, 88.38% extraction)
+
+4. **Previous: NDSS 2027 Submission**
    - Submission portal: NDSS 2027 (Summer cycle)
    - Paper: `paper/ndss27/0_0_main.pdf`
    - Status: Under Review
-
-2. **Meta Documents Updated**
-   - `README.md`: Current status updated to "Under Review at NDSS 2027"
-   - `CURRENT.md`: Rewritten as post-submission snapshot with submission checklist
-   - `PLAN.md`: All Phases 1–4 marked complete; Phase 5 added (Under Review / Awaiting Decision)
-   - `VERIFY.md`: Formatting verification items marked complete
-   - `RESEARCH.md`: Last updated timestamp refreshed
 
 ---
 
